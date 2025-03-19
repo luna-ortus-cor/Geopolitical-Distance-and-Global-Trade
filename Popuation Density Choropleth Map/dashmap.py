@@ -39,7 +39,7 @@ app.layout = html.Div([
     Input("dropdown", "value")  # Dummy input to trigger the function
 )
 def update_map(selected_country):
-    if not selected_country or selected_country=="world": #show world map by default
+    if not selected_country or selected_country=="World": #show world map by default
         filtered_df=df
     else:
         filtered_df=df[df["name"]==selected_country] #if select a country show animation for this country only
