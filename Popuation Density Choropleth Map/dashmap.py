@@ -9,24 +9,42 @@ app = Dash(__name__)
 
 # App layout
 app.layout = html.Div([
-    html.H4('Animated Population Density Over Time'),
-    
+    html.H2('Animated Population Density Over Time', style={"textAlign":"center"}),
+    #country dropdown
+    dcc.Dropdown(
+                id="dropdown",
+                placeholder="Select a Country",
+                options=[{"label": "World", "value": "World"}]+[{"label": country, "value": country} for country in df["name"].unique()],
+                style={
+                    "width": "150px", 
+                    "height": "30px",
+                    "display": "block", 
+                    "padding": "3px",
+                    "borderRadius": "5px",
+                    "border": "1px solid #ccc",
+                    "boxShadow": "2px 2px 5px rgba(0,0,0,0.1)",
+                    "fontSize": "15px"}
+                ),    
+
     # Choropleth map
     dcc.Loading(dcc.Graph(id="choropleth-map"), type="cube"),
     
     # Country info display
-    html.Div(id="country-info", style={"margin-top": "20px", "font-weight": "bold"})
+    html.Div(id="country-info", style={"margin-top": "20px", "font-weight": "bold"}),
 ])
-
 
 # Callback to update the choropleth map
 @app.callback(
     Output("choropleth-map", "figure"),
-    Input("choropleth-map", "id")  # Dummy input to trigger the function
+    Input("dropdown", "value")  # Dummy input to trigger the function
 )
-def update_map(_):
+def update_map(selected_country):
+    if not selected_country or selected_country=="world": #show world map by default
+        filtered_df=df
+    else:
+        filtered_df=df[df["name"]==selected_country] #if select a country show animation for this country only
     fig = px.choropleth(
-        df,
+        filtered_df,
         locations="Country Code",
         color="log_Density",
         hover_name="name",
@@ -38,7 +56,7 @@ def update_map(_):
     return fig
 
 
-# Callback to display country info when clicked
+#Callback to display country info when clicked
 @app.callback(
     Output("country-info", "children"),
     Input("choropleth-map", "clickData")
