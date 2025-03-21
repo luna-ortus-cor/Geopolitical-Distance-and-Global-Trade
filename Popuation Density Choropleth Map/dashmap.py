@@ -14,23 +14,24 @@ app.layout = html.Div([
     dcc.Dropdown(
                 id="dropdown",
                 placeholder="Select a Country",
-                options=[{"label": "World", "value": "World"}]+[{"label": country, "value": country} for country in df["name"].unique()],
+                options=["World"]+[country for country in df["name"].unique()],
                 style={
-                    "width": "150px", 
+                    "width": "250px", 
                     "height": "30px",
                     "display": "block", 
                     "padding": "3px",
                     "borderRadius": "5px",
                     "border": "1px solid #ccc",
                     "boxShadow": "2px 2px 5px rgba(0,0,0,0.1)",
-                    "fontSize": "15px"}
+                    "fontSize": "15px"},
+                multi=True
                 ),    
 
     # Choropleth map
     dcc.Loading(dcc.Graph(id="choropleth-map"), type="cube"),
     
     # Country info display
-    html.Div(id="country-info", style={"margin-top": "20px", "font-weight": "bold"}),
+    html.Div(id="country-info", style={"margin-top": "20px", "font-weight": "bold"})
 ])
 
 # Callback to update the choropleth map
@@ -38,11 +39,13 @@ app.layout = html.Div([
     Output("choropleth-map", "figure"),
     Input("dropdown", "value")  # Dummy input to trigger the function
 )
-def update_map(selected_country):
-    if not selected_country or selected_country=="World": #show world map by default
-        filtered_df=df
+def update_map(selected_countries):
+    if not selected_countries or "World" in selected_countries: #show world map by default
+        filtered_df=df 
     else:
-        filtered_df=df[df["name"]==selected_country] #if select a country show animation for this country only
+        if isinstance(selected_countries, str):
+            selected_countries=[selected_countries]
+        filtered_df=df[df["name"].isin(selected_countries)] #if select a country show animation for this country only
     fig = px.choropleth(
         filtered_df,
         locations="Country Code",
