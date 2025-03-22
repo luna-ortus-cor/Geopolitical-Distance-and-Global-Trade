@@ -9,3 +9,6 @@ AgreementScores data: https://dataverse.harvard.edu/dataset.xhtml?persistentId=d
 
 DTA Horizontal Content (2024): https://datatopics.worldbank.org/dta/table.html
 (I cannot open this on spreadsheet btw)
+
+CPI data: https://data.bls.gov/toppicks?survey=cu
+(U.S. city average, All items - CUUR0000SA0)

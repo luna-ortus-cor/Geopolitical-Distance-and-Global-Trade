@@ -14,7 +14,7 @@ def plot_export_volume(dataframe, country):
 
     ax.set_title(f'Singapore"s Export Volume to {country} Over Time')
     ax.set_xlabel('Year')
-    ax.set_ylabel('Export Volume (in US $ Thousand)')
+    ax.set_ylabel('Export Volume (in US $)')
 
     formatter = FuncFormatter(lambda x, pos: '{:,.0f}'.format(x))
     ax.yaxis.set_major_formatter(formatter)
@@ -45,7 +45,7 @@ st.write(f"Showing data for Exports to {country} in {sector} sector.")
 filtered_data = df[df['Partner Name'] == country][['Year', 'Export Value']]
 filtered_data = filtered_data.dropna()
 filtered_data = filtered_data.sort_values(by='Year', ascending=False)
-filtered_data['Export Value'] = filtered_data['Export Value'].apply(lambda x: f'${x * 1000:,.0f}')
+filtered_data['Export Value'] = filtered_data['Export Value'].apply(lambda x: f'${x:,.0f}')
 st.write("### Export Volume Data (US $)", filtered_data.set_index('Year'))
 
 plot_export_volume(df, country)
