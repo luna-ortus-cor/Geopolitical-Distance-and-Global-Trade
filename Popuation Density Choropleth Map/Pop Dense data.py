@@ -2,6 +2,7 @@ import json
 import pandas as pd
 import geopandas as gpd
 import numpy as np
+import pycountry_convert as pc
 
 # Load the CSV file, skipping the first 4 rows
 df = pd.read_csv("pop_dense.csv", skiprows=4)
@@ -28,6 +29,26 @@ df2 = df2.dropna(subset=['Year'])
 df2 = df2.dropna(subset=['Population Density'])
 
 df2["Year"] = df2["Year"].astype(int)  # Ensure Year is numeric
+
+def get_continent_from_code(country_code):
+    try:
+        #convert the country code to alpha2
+        alpha2 = pc.country_name_to_country_alpha2(country_code)
+        continent_code = pc.country_alpha2_to_continent_code(alpha2)
+        continent_names = {
+            "AF": "Africa",
+            "AS": "Asia",
+            "EU": "Europe",
+            "NA": "North America",
+            "SA": "South America",
+            "OC": "Oceania"
+        }
+        return continent_names.get(continent_code, "Other")
+    except:
+        return "Other"
+
+# Add the region (continent) column based on the 3-letter country code
+df2['region'] = df2['Country Code'].apply(get_continent_from_code)
 
 print(df2.head())
 
