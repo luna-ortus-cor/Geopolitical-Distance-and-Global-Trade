@@ -15,7 +15,22 @@ app.layout = html.Div(style={"margin":"50px"}, children=[
             html.H2('Animated Population Density Over Time', style={"textAlign":"center"}),
             #country dropdown
             dcc.Dropdown(
-                        id="dropdown",
+                    id="region-dropdown",
+                    placeholder="Select a Region",
+                    options= [{"label": "World", "value": "World"}]  + [{"label": region, "value": region} for region in df["region"].unique()],
+                    style={
+                        "width": "250px",
+                        "height": "30px",
+                        "display": "block",
+                        "padding": "3px",
+                        "borderRadius": "5px",
+                        "border": "1px solid #ccc",
+                        "boxShadow": "2px 2px 5px rgba(0,0,0,0.1)",
+                        "fontSize": "15px"},
+                        multi=False
+                        ),
+            dcc.Dropdown(
+                        id="country-dropdown",
                         placeholder="Select a Country",
                         options=["World"]+[country for country in df["name"].unique()],
                         style={
@@ -58,6 +73,22 @@ app.layout = html.Div(style={"margin":"50px"}, children=[
     })
 ])
 
+# Callback to update the list of countries based on selected region
+@app.callback(
+    [Output("country-dropdown", "options"),
+     Output("country-dropdown", "value")],  
+    Input("region-dropdown", "value")
+)
+def update_country_dropdown(selected_region):
+    if not selected_region or "World" in selected_region:  # If no region or world is selected, show all countries and no default selection
+        return [{"label": country, "value": country} for country in df["name"].unique()], []
+    
+    # Filter countries by the selected region
+    filtered_countries = df[df["region"] == selected_region]["name"].unique()
+    
+    # Return options for the dropdown and set all filtered countries as the selected values
+    return [{"label": country, "value": country} for country in filtered_countries], list(filtered_countries)
+
 #Callback to display country info when clicked
 @app.callback(    
     Output("country-info", "children"),
@@ -75,15 +106,14 @@ def display_country_info(clickData):
 # Callback to update the choropleth map
 @app.callback(
     Output("choropleth-map", "figure"),
-    Input("dropdown", "value")  # Dummy input to trigger the function
+    Input("country-dropdown", "value")  # Dummy input to trigger the function
 )
 def update_map(selected_countries):
-    if not selected_countries or "World" in selected_countries: #show world map by default
-        filtered_df=df 
+    if not selected_countries:  # If no countries are selected, show the whole world
+        filtered_df = df
     else:
-        if isinstance(selected_countries, str):
-            selected_countries=[selected_countries]
-        filtered_df=df[df["name"].isin(selected_countries)] #if select countries from dropdown, show animation for selected countries only
+        filtered_df = df[df["name"].isin(selected_countries)]  # Filter by selected countries
+    
     fig = px.choropleth(
         filtered_df,
         locations="Country Code",
