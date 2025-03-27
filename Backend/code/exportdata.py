@@ -10,54 +10,29 @@ manufacturesexports = pd.read_excel("../data/WITS-Partner-Manufactures.xlsx", sh
 cpi = pd.read_excel("../data/cpi.xlsx", skiprows = 11)
 
 # Making country names consistent with COW data set
-# Take note, 'Czechslovakia', 'German Federal Republic', 'Yugoslavia, FR (Serbia/Montenegro)' has not been touched
-allexports['Partner Name'] = allexports['Partner Name'].replace({
-    'Hong Kong, China': 'Hong Kong',
-    'Korea, Dem. Rep.': 'North Korea',
+name_mapping = {
     'Korea, Rep.': 'South Korea',
-    'Macao': 'Macau',
-    'United Arab Emirates': 'UAE',
-})
+    'Korea, Dem. Rep.': 'North Korea',
+    'Antigua and Barbuda': 'Antigua & Barbuda',
+    'Micronesia, Fed. Sts.': 'Federated States of Micronesia',
+    'Congo, Dem. Rep.': 'Democratic Republic of the Congo',
+    'Kyrgyz Republic': 'Kyrgyzstan',
+    'Slovak Republic': 'Slovakia',
+    'Russian Federation': 'Russia',
+    'Iran, Islamic Rep.': 'Iran',
+    'Egypt, Arab Rep.': 'Egypt',
+    'Bahamas, The': 'Bahamas',
+    'Syrian Arab Republic': 'Syria',
+    'Lao PDR': 'Laos',
+    'United States': 'United States of America',
+}
 
-chemicalexports['Partner Name'] = chemicalexports['Partner Name'].replace({
-    'Hong Kong, China': 'Hong Kong',
-    'Korea, Dem. Rep.': 'North Korea',
-    'Korea, Rep.': 'South Korea',
-    'Macao': 'Macau',
-    'United Arab Emirates': 'UAE',
-})
-
-consumerexports['Partner Name'] = consumerexports['Partner Name'].replace({
-    'Hong Kong, China': 'Hong Kong',
-    'Korea, Dem. Rep.': 'North Korea',
-    'Korea, Rep.': 'South Korea',
-    'Macao': 'Macau',
-    'United Arab Emirates': 'UAE',
-})
-
-foodexports['Partner Name'] = foodexports['Partner Name'].replace({
-    'Hong Kong, China': 'Hong Kong',
-    'Korea, Dem. Rep.': 'North Korea',
-    'Korea, Rep.': 'South Korea',
-    'Macao': 'Macau',
-    'United Arab Emirates': 'UAE',
-})
-
-machineryexports['Partner Name'] = machineryexports['Partner Name'].replace({
-    'Hong Kong, China': 'Hong Kong',
-    'Korea, Dem. Rep.': 'North Korea',
-    'Korea, Rep.': 'South Korea',
-    'Macao': 'Macau',
-    'United Arab Emirates': 'UAE',
-})
-
-manufacturesexports['Partner Name'] = manufacturesexports['Partner Name'].replace({
-    'Hong Kong, China': 'Hong Kong',
-    'Korea, Dem. Rep.': 'North Korea',
-    'Korea, Rep.': 'South Korea',
-    'Macao': 'Macau',
-    'United Arab Emirates': 'UAE',
-})
+allexports['Partner Name'] = allexports['Partner Name'].replace(name_mapping)
+chemicalexports['Partner Name'] = chemicalexports['Partner Name'].replace(name_mapping)
+consumerexports['Partner Name'] = consumerexports['Partner Name'].replace(name_mapping)
+foodexports['Partner Name'] = foodexports['Partner Name'].replace(name_mapping)
+machineryexports['Partner Name'] = machineryexports['Partner Name'].replace(name_mapping)
+manufacturesexports['Partner Name'] = manufacturesexports['Partner Name'].replace(name_mapping)
 
 # Convert from US$ Thousand to US$
 def convert_to_usd(df):
@@ -98,5 +73,3 @@ consumerexports = pd.melt(consumerexports, id_vars=['Reporter Name', 'Partner Na
 foodexports = pd.melt(foodexports, id_vars=['Reporter Name', 'Partner Name', 'Trade Flow', 'Product Group', 'Indicator'], value_vars=[str(year) for year in range(1989, 2023)], var_name='Year', value_name='Export Value')
 machineryexports = pd.melt(machineryexports, id_vars=['Reporter Name', 'Partner Name', 'Trade Flow', 'Product Group', 'Indicator'], value_vars=[str(year) for year in range(1989, 2023)], var_name='Year', value_name='Export Value')
 manufacturesexports = pd.melt(manufacturesexports, id_vars=['Reporter Name', 'Partner Name', 'Trade Flow', 'Product Group', 'Indicator'], value_vars=[str(year) for year in range(1989, 2023)], var_name='Year', value_name='Export Value')
-
-print(allexports.head())
