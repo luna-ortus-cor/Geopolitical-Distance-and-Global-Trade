@@ -47,6 +47,13 @@ foodexports = convert_to_usd(foodexports)
 machineryexports = convert_to_usd(machineryexports)
 manufacturesexports = convert_to_usd(manufacturesexports)
 
+allexports = allexports.drop(columns=['Indicator'])
+chemicalexports = chemicalexports.drop(columns=['Indicator'])
+consumerexports = consumerexports.drop(columns=['Indicator'])
+foodexports = foodexports.drop(columns=['Indicator'])
+machineryexports = machineryexports.drop(columns=['Indicator'])
+manufacturesexports = manufacturesexports.drop(columns=['Indicator'])
+
 # Adjusting for inflation, base year = 2022
 cpi = cpi[['Year', 'Annual']]
 cpi['Year'] = cpi['Year'].astype(str)
@@ -59,17 +66,11 @@ def adjust_for_inflation(df, cpi_dict, base_year_cpi):
             df[year] = df[year] * (base_year_cpi / cpi_dict[year])
     return df
 
-allexports = adjust_for_inflation(allexports, cpi_dict, base_year_cpi)
-chemicalexports = adjust_for_inflation(chemicalexports, cpi_dict, base_year_cpi)
-consumerexports = adjust_for_inflation(consumerexports, cpi_dict, base_year_cpi)
-foodexports = adjust_for_inflation(foodexports, cpi_dict, base_year_cpi)
-machineryexports = adjust_for_inflation(machineryexports, cpi_dict, base_year_cpi)
-manufacturesexports = adjust_for_inflation(manufacturesexports, cpi_dict, base_year_cpi)
 
 # Tidy format
-allexports = pd.melt(allexports, id_vars=['Reporter Name', 'Partner Name', 'Trade Flow', 'Product Group', 'Indicator'], value_vars=[str(year) for year in range(1989, 2023)], var_name='Year', value_name='Export Value')
-chemicalexports = pd.melt(chemicalexports, id_vars=['Reporter Name', 'Partner Name', 'Trade Flow', 'Product Group', 'Indicator'], value_vars=[str(year) for year in range(1989, 2023)], var_name='Year', value_name='Export Value')
-consumerexports = pd.melt(consumerexports, id_vars=['Reporter Name', 'Partner Name', 'Trade Flow', 'Product Group', 'Indicator'], value_vars=[str(year) for year in range(1989, 2023)], var_name='Year', value_name='Export Value')
-foodexports = pd.melt(foodexports, id_vars=['Reporter Name', 'Partner Name', 'Trade Flow', 'Product Group', 'Indicator'], value_vars=[str(year) for year in range(1989, 2023)], var_name='Year', value_name='Export Value')
-machineryexports = pd.melt(machineryexports, id_vars=['Reporter Name', 'Partner Name', 'Trade Flow', 'Product Group', 'Indicator'], value_vars=[str(year) for year in range(1989, 2023)], var_name='Year', value_name='Export Value')
-manufacturesexports = pd.melt(manufacturesexports, id_vars=['Reporter Name', 'Partner Name', 'Trade Flow', 'Product Group', 'Indicator'], value_vars=[str(year) for year in range(1989, 2023)], var_name='Year', value_name='Export Value')
+allexports = pd.melt(allexports, id_vars=['Reporter Name', 'Partner Name'], value_vars=[str(year) for year in range(1989, 2023)], var_name='Year', value_name='Export Value')
+chemicalexports = pd.melt(chemicalexports, id_vars=['Reporter Name', 'Partner Name'], value_vars=[str(year) for year in range(1989, 2023)], var_name='Year', value_name='Export Value')
+consumerexports = pd.melt(consumerexports, id_vars=['Reporter Name', 'Partner Name'], value_vars=[str(year) for year in range(1989, 2023)], var_name='Year', value_name='Export Value')
+foodexports = pd.melt(foodexports, id_vars=['Reporter Name', 'Partner Name'], value_vars=[str(year) for year in range(1989, 2023)], var_name='Year', value_name='Export Value')
+machineryexports = pd.melt(machineryexports, id_vars=['Reporter Name', 'Partner Name'], value_vars=[str(year) for year in range(1989, 2023)], var_name='Year', value_name='Export Value')
+manufacturesexports = pd.melt(manufacturesexports, id_vars=['Reporter Name', 'Partner Name'], value_vars=[str(year) for year in range(1989, 2023)], var_name='Year', value_name='Export Value')

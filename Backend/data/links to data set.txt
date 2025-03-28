@@ -12,3 +12,5 @@ DTA Horizontal Content (2024): https://datatopics.worldbank.org/dta/table.html
 
 CPI data: https://data.bls.gov/toppicks?survey=cu
 (U.S. city average, All items - CUUR0000SA0)
+
+Gravity: https://www.cepii.fr/CEPII/en/bdd_modele/bdd_modele_item.asp?id=8
