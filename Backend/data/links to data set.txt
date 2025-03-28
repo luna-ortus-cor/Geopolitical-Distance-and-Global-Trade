@@ -1,0 +1,16 @@
+WITS-Partner-X data: https://wits.worldbank.org/CountryProfile/en/Country/SGP/StartYear/1989/EndYear/2022/TradeFlow/Export/Indicator/XPRT-TRD-VL/Partner/BY-COUNTRY/Product/Total
+
+trade-register-sg-X data: https://armstransfers.sipri.org/ArmsTransfer/TransferRegister
+
+COW country codes data: https://github.com/evoeten/United-Nations-General-Assembly-Votes-and-Ideal-Points/blob/master/Data/COW%20country%20codes.csv
+
+AgreementScores data: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/LEJUQZ
+(omitted from GitHub due to large file size)
+
+DTA Horizontal Content (2024): https://datatopics.worldbank.org/dta/table.html
+(I cannot open this on spreadsheet btw)
+
+CPI data: https://data.bls.gov/toppicks?survey=cu
+(U.S. city average, All items - CUUR0000SA0)
+
+Gravity: https://www.cepii.fr/CEPII/en/bdd_modele/bdd_modele_item.asp?id=8
