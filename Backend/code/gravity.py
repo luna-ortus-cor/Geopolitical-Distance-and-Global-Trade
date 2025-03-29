@@ -2,7 +2,7 @@ import pandas as pd
 from exportdata import allexports
 
 # Importing data
-gravity = pd.read_csv("../data/Gravity_V202211.csv")
+gravity = pd.read_csv("../data/Gravity_V202211.csv", dtype={"col_dep_end_conflict": str}, low_memory=False)
 countries = pd.read_csv("../data/Countries_V202211.csv")
 
 countries = countries[['iso3', 'country']]
@@ -20,6 +20,8 @@ gravity3 = gravity2[(gravity2['year'] >= 1989) &
 # Adding in country names
 gravity4 = gravity3.merge(countries, left_on='iso3_o', right_on='iso3', how='left')
 gravityfinal = gravity4.drop(columns=['iso3']).rename(columns={'country': 'country_o'})
+
+gravityfinal.to_csv("../data/gravity_all.csv", index=False)
 
 #### Variables (delete this after you have used the data):
 # dist: Geodesic distance between most populated cities (km) (bilateral)

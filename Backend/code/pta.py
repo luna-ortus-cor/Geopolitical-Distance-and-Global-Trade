@@ -63,6 +63,8 @@ ptasg_expanded = pd.DataFrame(expanded_rows)
 ptasg_expanded = ptasg_expanded[~ptasg_expanded['Country 2'].str.contains("1992")]
 ptasg_expanded['Country 2'] = ptasg_expanded['Country 2'].replace({"Chinese Taipei": "Taiwan", "Türkiye": "Turkey", "Korea, Republic of": "South Korea", "Hong Kong, China": "Hong Kong"})
 
+ptasg_expanded.to_csv("../data/pta_sg.csv", index=False)
+
 #print(ptasg_expanded.head())
 
 # Before deciding which variable to use, consider how we going to use it also, for example, do we take the HIGHEST value of FTAIndustrial for duplicated rows, or take the mean/median or what?

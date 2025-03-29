@@ -1,0 +1,158 @@
+RTAID,WBID,Agreement,FTAIndustrial,FTAAgriculture,Customs,ExportTaxes,SPS,TBT,STE,AD,CVM,StateAid,PublicProcurement,TRIMs,GATS,TRIPs,Country 1,Country 2
+437,183,ASEAN - Australia - New Zealand,2,2,2,2,2,2,0,2,2,0,0,2,2,2,Singapore,Brunei
+437,183,ASEAN - Australia - New Zealand,2,2,2,2,2,2,0,2,2,0,0,2,2,2,Singapore,Cambodia
+437,183,ASEAN - Australia - New Zealand,2,2,2,2,2,2,0,2,2,0,0,2,2,2,Singapore,Indonesia
+437,183,ASEAN - Australia - New Zealand,2,2,2,2,2,2,0,2,2,0,0,2,2,2,Singapore,Laos
+437,183,ASEAN - Australia - New Zealand,2,2,2,2,2,2,0,2,2,0,0,2,2,2,Singapore,Malaysia
+437,183,ASEAN - Australia - New Zealand,2,2,2,2,2,2,0,2,2,0,0,2,2,2,Singapore,Myanmar
+437,183,ASEAN - Australia - New Zealand,2,2,2,2,2,2,0,2,2,0,0,2,2,2,Singapore,Philippines
+437,183,ASEAN - Australia - New Zealand,2,2,2,2,2,2,0,2,2,0,0,2,2,2,Singapore,Thailand
+437,183,ASEAN - Australia - New Zealand,2,2,2,2,2,2,0,2,2,0,0,2,2,2,Singapore,Vietnam
+437,183,ASEAN - Australia - New Zealand,2,2,2,2,2,2,0,2,2,0,0,2,2,2,Singapore,Australia
+437,183,ASEAN - Australia - New Zealand,2,2,2,2,2,2,0,2,2,0,0,2,2,2,Singapore,New Zealand
+42,106,ASEAN - China,2,2,0,0,0,0,0,2,2,0,0,0,0,0,Singapore,Brunei
+42,106,ASEAN - China,2,2,0,0,0,0,0,2,2,0,0,0,0,0,Singapore,Cambodia
+42,106,ASEAN - China,2,2,0,0,0,0,0,2,2,0,0,0,0,0,Singapore,Indonesia
+42,106,ASEAN - China,2,2,0,0,0,0,0,2,2,0,0,0,0,0,Singapore,Laos
+42,106,ASEAN - China,2,2,0,0,0,0,0,2,2,0,0,0,0,0,Singapore,Malaysia
+42,106,ASEAN - China,2,2,0,0,0,0,0,2,2,0,0,0,0,0,Singapore,Myanmar
+42,106,ASEAN - China,2,2,0,0,0,0,0,2,2,0,0,0,0,0,Singapore,Philippines
+42,106,ASEAN - China,2,2,0,0,0,0,0,2,2,0,0,0,0,0,Singapore,Thailand
+42,106,ASEAN - China,2,2,0,0,0,0,0,2,2,0,0,0,0,0,Singapore,Vietnam
+42,106,ASEAN - China,2,2,0,0,0,0,0,2,2,0,0,0,0,0,Singapore,China
+994,294,"ASEAN - Hong Kong, China",2,2,2,2,2,2,0,2,2,1,0,0,2,2,Singapore,Brunei
+994,294,"ASEAN - Hong Kong, China",2,2,2,2,2,2,0,2,2,1,0,0,2,2,Singapore,Cambodia
+994,294,"ASEAN - Hong Kong, China",2,2,2,2,2,2,0,2,2,1,0,0,2,2,Singapore,Indonesia
+994,294,"ASEAN - Hong Kong, China",2,2,2,2,2,2,0,2,2,1,0,0,2,2,Singapore,Laos
+994,294,"ASEAN - Hong Kong, China",2,2,2,2,2,2,0,2,2,1,0,0,2,2,Singapore,Malaysia
+994,294,"ASEAN - Hong Kong, China",2,2,2,2,2,2,0,2,2,1,0,0,2,2,Singapore,Myanmar
+994,294,"ASEAN - Hong Kong, China",2,2,2,2,2,2,0,2,2,1,0,0,2,2,Singapore,Philippines
+994,294,"ASEAN - Hong Kong, China",2,2,2,2,2,2,0,2,2,1,0,0,2,2,Singapore,Thailand
+994,294,"ASEAN - Hong Kong, China",2,2,2,2,2,2,0,2,2,1,0,0,2,2,Singapore,Vietnam
+994,294,"ASEAN - Hong Kong, China",2,2,2,2,2,2,0,2,2,1,0,0,2,2,Singapore,Hong Kong
+438,187,ASEAN - India,2,2,2,2,2,2,0,0,0,0,0,2,2,0,Singapore,Brunei
+438,187,ASEAN - India,2,2,2,2,2,2,0,0,0,0,0,2,2,0,Singapore,Cambodia
+438,187,ASEAN - India,2,2,2,2,2,2,0,0,0,0,0,2,2,0,Singapore,Indonesia
+438,187,ASEAN - India,2,2,2,2,2,2,0,0,0,0,0,2,2,0,Singapore,Laos
+438,187,ASEAN - India,2,2,2,2,2,2,0,0,0,0,0,2,2,0,Singapore,Malaysia
+438,187,ASEAN - India,2,2,2,2,2,2,0,0,0,0,0,2,2,0,Singapore,Myanmar
+438,187,ASEAN - India,2,2,2,2,2,2,0,0,0,0,0,2,2,0,Singapore,Philippines
+438,187,ASEAN - India,2,2,2,2,2,2,0,0,0,0,0,2,2,0,Singapore,Thailand
+438,187,ASEAN - India,2,2,2,2,2,2,0,0,0,0,0,2,2,0,Singapore,Vietnam
+438,187,ASEAN - India,2,2,2,2,2,2,0,0,0,0,0,2,2,0,Singapore,India
+176,175,ASEAN - Japan,2,2,2,0,2,2,0,2,2,0,0,2,2,0,Singapore,Brunei
+176,175,ASEAN - Japan,2,2,2,0,2,2,0,2,2,0,0,2,2,0,Singapore,Cambodia
+176,175,ASEAN - Japan,2,2,2,0,2,2,0,2,2,0,0,2,2,0,Singapore,Indonesia
+176,175,ASEAN - Japan,2,2,2,0,2,2,0,2,2,0,0,2,2,0,Singapore,Laos
+176,175,ASEAN - Japan,2,2,2,0,2,2,0,2,2,0,0,2,2,0,Singapore,Malaysia
+176,175,ASEAN - Japan,2,2,2,0,2,2,0,2,2,0,0,2,2,0,Singapore,Myanmar
+176,175,ASEAN - Japan,2,2,2,0,2,2,0,2,2,0,0,2,2,0,Singapore,Philippines
+176,175,ASEAN - Japan,2,2,2,0,2,2,0,2,2,0,0,2,2,0,Singapore,Thailand
+176,175,ASEAN - Japan,2,2,2,0,2,2,0,2,2,0,0,2,2,0,Singapore,Vietnam
+176,175,ASEAN - Japan,2,2,2,0,2,2,0,2,2,0,0,2,2,0,Singapore,Japan
+169,279,"ASEAN - Korea, Republic of",2,2,0,0,2,2,2,2,2,2,0,2,2,2,Singapore,Brunei
+169,279,"ASEAN - Korea, Republic of",2,2,0,0,2,2,2,2,2,2,0,2,2,2,Singapore,Cambodia
+169,279,"ASEAN - Korea, Republic of",2,2,0,0,2,2,2,2,2,2,0,2,2,2,Singapore,Indonesia
+169,279,"ASEAN - Korea, Republic of",2,2,0,0,2,2,2,2,2,2,0,2,2,2,Singapore,Laos
+169,279,"ASEAN - Korea, Republic of",2,2,0,0,2,2,2,2,2,2,0,2,2,2,Singapore,Malaysia
+169,279,"ASEAN - Korea, Republic of",2,2,0,0,2,2,2,2,2,2,0,2,2,2,Singapore,Myanmar
+169,279,"ASEAN - Korea, Republic of",2,2,0,0,2,2,2,2,2,2,0,2,2,2,Singapore,Philippines
+169,279,"ASEAN - Korea, Republic of",2,2,0,0,2,2,2,2,2,2,0,2,2,2,Singapore,Thailand
+169,279,"ASEAN - Korea, Republic of",2,2,0,0,2,2,2,2,2,2,0,2,2,2,Singapore,Vietnam
+169,279,"ASEAN - Korea, Republic of",2,2,0,0,2,2,2,2,2,2,0,2,2,2,Singapore,South Korea
+1170,295,ASEAN Free Trade Area (AFTA),2,2,2,2,2,2,0,2,2,2,0,0,2,0,Singapore,Brunei
+1170,295,ASEAN Free Trade Area (AFTA),2,2,2,2,2,2,0,2,2,2,0,0,2,0,Singapore,Cambodia
+1170,295,ASEAN Free Trade Area (AFTA),2,2,2,2,2,2,0,2,2,2,0,0,2,0,Singapore,Indonesia
+1170,295,ASEAN Free Trade Area (AFTA),2,2,2,2,2,2,0,2,2,2,0,0,2,0,Singapore,Laos
+1170,295,ASEAN Free Trade Area (AFTA),2,2,2,2,2,2,0,2,2,2,0,0,2,0,Singapore,Malaysia
+1170,295,ASEAN Free Trade Area (AFTA),2,2,2,2,2,2,0,2,2,2,0,0,2,0,Singapore,Myanmar
+1170,295,ASEAN Free Trade Area (AFTA),2,2,2,2,2,2,0,2,2,2,0,0,2,0,Singapore,Philippines
+1170,295,ASEAN Free Trade Area (AFTA),2,2,2,2,2,2,0,2,2,2,0,0,2,0,Singapore,Thailand
+1170,295,ASEAN Free Trade Area (AFTA),2,2,2,2,2,2,0,2,2,2,0,0,2,0,Singapore,Vietnam
+126,25,ASEAN Free Trade Area (AFTA) - 1992,2,0,0,0,0,0,0,0,0,0,0,0,0,0,Singapore,Brunei
+126,25,ASEAN Free Trade Area (AFTA) - 1992,2,0,0,0,0,0,0,0,0,0,0,0,0,0,Singapore,Cambodia
+126,25,ASEAN Free Trade Area (AFTA) - 1992,2,0,0,0,0,0,0,0,0,0,0,0,0,0,Singapore,Indonesia
+126,25,ASEAN Free Trade Area (AFTA) - 1992,2,0,0,0,0,0,0,0,0,0,0,0,0,0,Singapore,Laos
+126,25,ASEAN Free Trade Area (AFTA) - 1992,2,0,0,0,0,0,0,0,0,0,0,0,0,0,Singapore,Malaysia
+126,25,ASEAN Free Trade Area (AFTA) - 1992,2,0,0,0,0,0,0,0,0,0,0,0,0,0,Singapore,Myanmar
+126,25,ASEAN Free Trade Area (AFTA) - 1992,2,0,0,0,0,0,0,0,0,0,0,0,0,0,Singapore,Philippines
+126,25,ASEAN Free Trade Area (AFTA) - 1992,2,0,0,0,0,0,0,0,0,0,0,0,0,0,Singapore,Thailand
+126,25,ASEAN Free Trade Area (AFTA) - 1992,2,0,0,0,0,0,0,0,0,0,0,0,0,0,Singapore,Vietnam
+496,162,China - Singapore,2,2,2,0,2,2,2,2,2,0,0,2,2,0,Singapore,China
+640,281,Comprehensive and Progressive Agreement for Trans-Pacific Partnership (CPTPP),2,2,2,2,2,2,2,1,1,2,2,2,2,2,Singapore,Australia
+640,281,Comprehensive and Progressive Agreement for Trans-Pacific Partnership (CPTPP),2,2,2,2,2,2,2,1,1,2,2,2,2,2,Singapore,Brunei
+640,281,Comprehensive and Progressive Agreement for Trans-Pacific Partnership (CPTPP),2,2,2,2,2,2,2,1,1,2,2,2,2,2,Singapore,Canada
+640,281,Comprehensive and Progressive Agreement for Trans-Pacific Partnership (CPTPP),2,2,2,2,2,2,2,1,1,2,2,2,2,2,Singapore,Chile
+640,281,Comprehensive and Progressive Agreement for Trans-Pacific Partnership (CPTPP),2,2,2,2,2,2,2,1,1,2,2,2,2,2,Singapore,Japan
+640,281,Comprehensive and Progressive Agreement for Trans-Pacific Partnership (CPTPP),2,2,2,2,2,2,2,1,1,2,2,2,2,2,Singapore,Malaysia
+640,281,Comprehensive and Progressive Agreement for Trans-Pacific Partnership (CPTPP),2,2,2,2,2,2,2,1,1,2,2,2,2,2,Singapore,Mexico
+640,281,Comprehensive and Progressive Agreement for Trans-Pacific Partnership (CPTPP),2,2,2,2,2,2,2,1,1,2,2,2,2,2,Singapore,New Zealand
+640,281,Comprehensive and Progressive Agreement for Trans-Pacific Partnership (CPTPP),2,2,2,2,2,2,2,1,1,2,2,2,2,2,Singapore,Peru
+640,281,Comprehensive and Progressive Agreement for Trans-Pacific Partnership (CPTPP),2,2,2,2,2,2,2,1,1,2,2,2,2,2,Singapore,Vietnam
+678,243,Costa Rica - Singapore,2,2,2,2,2,2,0,2,2,2,2,2,2,2,Singapore,Costa Rica
+65,78,EFTA - Singapore,2,2,0,2,2,2,2,2,2,0,0,0,2,2,Singapore,Iceland
+65,78,EFTA - Singapore,2,2,0,2,2,2,2,2,2,0,0,0,2,2,Singapore,Liechtenstein
+65,78,EFTA - Singapore,2,2,0,2,2,2,2,2,2,0,0,0,2,2,Singapore,Norway
+65,78,EFTA - Singapore,2,2,0,2,2,2,2,2,2,0,0,0,2,2,Singapore,Switzerland
+847,287,EU - Singapore,2,2,2,2,2,2,2,1,1,1,2,0,2,2,Singapore,Austria
+847,287,EU - Singapore,2,2,2,2,2,2,2,1,1,1,2,0,2,2,Singapore,Belgium
+847,287,EU - Singapore,2,2,2,2,2,2,2,1,1,1,2,0,2,2,Singapore,Bulgaria
+847,287,EU - Singapore,2,2,2,2,2,2,2,1,1,1,2,0,2,2,Singapore,Croatia
+847,287,EU - Singapore,2,2,2,2,2,2,2,1,1,1,2,0,2,2,Singapore,Cyprus
+847,287,EU - Singapore,2,2,2,2,2,2,2,1,1,1,2,0,2,2,Singapore,Czech Republic
+847,287,EU - Singapore,2,2,2,2,2,2,2,1,1,1,2,0,2,2,Singapore,Denmark
+847,287,EU - Singapore,2,2,2,2,2,2,2,1,1,1,2,0,2,2,Singapore,Estonia
+847,287,EU - Singapore,2,2,2,2,2,2,2,1,1,1,2,0,2,2,Singapore,Finland
+847,287,EU - Singapore,2,2,2,2,2,2,2,1,1,1,2,0,2,2,Singapore,France
+847,287,EU - Singapore,2,2,2,2,2,2,2,1,1,1,2,0,2,2,Singapore,Germany
+847,287,EU - Singapore,2,2,2,2,2,2,2,1,1,1,2,0,2,2,Singapore,Greece
+847,287,EU - Singapore,2,2,2,2,2,2,2,1,1,1,2,0,2,2,Singapore,Hungary
+847,287,EU - Singapore,2,2,2,2,2,2,2,1,1,1,2,0,2,2,Singapore,Ireland
+847,287,EU - Singapore,2,2,2,2,2,2,2,1,1,1,2,0,2,2,Singapore,Italy
+847,287,EU - Singapore,2,2,2,2,2,2,2,1,1,1,2,0,2,2,Singapore,Latvia
+847,287,EU - Singapore,2,2,2,2,2,2,2,1,1,1,2,0,2,2,Singapore,Lithuania
+847,287,EU - Singapore,2,2,2,2,2,2,2,1,1,1,2,0,2,2,Singapore,Luxembourg
+847,287,EU - Singapore,2,2,2,2,2,2,2,1,1,1,2,0,2,2,Singapore,Malta
+847,287,EU - Singapore,2,2,2,2,2,2,2,1,1,1,2,0,2,2,Singapore,Netherlands
+847,287,EU - Singapore,2,2,2,2,2,2,2,1,1,1,2,0,2,2,Singapore,Poland
+847,287,EU - Singapore,2,2,2,2,2,2,2,1,1,1,2,0,2,2,Singapore,Portugal
+847,287,EU - Singapore,2,2,2,2,2,2,2,1,1,1,2,0,2,2,Singapore,Romania
+847,287,EU - Singapore,2,2,2,2,2,2,2,1,1,1,2,0,2,2,Singapore,Slovakia
+847,287,EU - Singapore,2,2,2,2,2,2,2,1,1,1,2,0,2,2,Singapore,Slovenia
+847,287,EU - Singapore,2,2,2,2,2,2,2,1,1,1,2,0,2,2,Singapore,Spain
+847,287,EU - Singapore,2,2,2,2,2,2,2,1,1,1,2,0,2,2,Singapore,Sweden
+921,263,Gulf Cooperation Council (GCC) - Singapore,2,2,2,0,2,2,2,0,0,0,2,0,2,0,Singapore,Bahrain
+921,263,Gulf Cooperation Council (GCC) - Singapore,2,2,2,0,2,2,2,0,0,0,2,0,2,0,Singapore,Kuwait
+921,263,Gulf Cooperation Council (GCC) - Singapore,2,2,2,0,2,2,2,0,0,0,2,0,2,0,Singapore,Oman
+921,263,Gulf Cooperation Council (GCC) - Singapore,2,2,2,0,2,2,2,0,0,0,2,0,2,0,Singapore,Qatar
+921,263,Gulf Cooperation Council (GCC) - Singapore,2,2,2,0,2,2,2,0,0,0,2,0,2,0,Singapore,Saudi Arabia
+921,263,Gulf Cooperation Council (GCC) - Singapore,2,2,2,0,2,2,2,0,0,0,2,0,2,0,Singapore,United Arab Emirates
+10,123,India - Singapore,2,2,2,0,2,2,2,2,2,2,0,2,2,0,Singapore,India
+70,75,Japan - Singapore,2,2,2,2,0,2,2,2,2,0,0,2,2,2,Singapore,Japan
+23,112,Jordan - Singapore,2,2,0,0,0,0,0,2,2,2,0,0,2,2,Singapore,Jordan
+28,110,"Korea, Republic of - Singapore",2,2,2,2,2,2,0,2,2,0,2,2,2,2,Singapore,South Korea
+78,69,New Zealand - Singapore,2,2,2,0,2,2,0,2,0,2,2,0,2,2,Singapore,New Zealand
+11,122,Panama - Singapore,2,2,2,2,0,1,0,2,2,2,2,2,2,0,Singapore,Panama
+495,168,Peru - Singapore,2,2,2,2,2,2,0,0,2,2,2,2,2,2,Singapore,Peru
+60,81,Singapore - Australia,2,2,2,0,2,2,2,2,0,2,1,2,2,2,Singapore,Australia
+890,247,Singapore - Chinese Taipei,2,2,2,2,0,2,1,2,2,2,2,2,2,0,Singapore,Taiwan
+9,124,Trans-Pacific Strategic Economic Partnership,2,2,2,2,2,2,1,0,0,2,2,0,2,2,Singapore,Brunei
+9,124,Trans-Pacific Strategic Economic Partnership,2,2,2,2,2,2,1,0,0,2,2,0,2,2,Singapore,Chile
+9,124,Trans-Pacific Strategic Economic Partnership,2,2,2,2,2,2,1,0,0,2,2,0,2,2,Singapore,New Zealand
+935,301,Türkiye - Singapore,2,2,2,2,2,2,2,1,1,1,2,2,2,2,Singapore,Turkey
+1128,383,United Kingdom - Singapore,2,2,2,2,2,2,2,1,1,1,2,0,2,2,Singapore,United Kingdom
+58,83,United States - Singapore,2,2,2,2,0,0,2,2,2,0,2,2,2,2,Singapore,United States
+999A1,395,RCEP (Regional Comprehensive Economic Partnership) Agreement,2,2,2,0,1,1,1,1,1,1,1,2,2,2,Singapore,Australia
+999A1,395,RCEP (Regional Comprehensive Economic Partnership) Agreement,2,2,2,0,1,1,1,1,1,1,1,2,2,2,Singapore,Brunei
+999A1,395,RCEP (Regional Comprehensive Economic Partnership) Agreement,2,2,2,0,1,1,1,1,1,1,1,2,2,2,Singapore,Cambodia
+999A1,395,RCEP (Regional Comprehensive Economic Partnership) Agreement,2,2,2,0,1,1,1,1,1,1,1,2,2,2,Singapore,China
+999A1,395,RCEP (Regional Comprehensive Economic Partnership) Agreement,2,2,2,0,1,1,1,1,1,1,1,2,2,2,Singapore,Indonesia
+999A1,395,RCEP (Regional Comprehensive Economic Partnership) Agreement,2,2,2,0,1,1,1,1,1,1,1,2,2,2,Singapore,Japan
+999A1,395,RCEP (Regional Comprehensive Economic Partnership) Agreement,2,2,2,0,1,1,1,1,1,1,1,2,2,2,Singapore,Laos
+999A1,395,RCEP (Regional Comprehensive Economic Partnership) Agreement,2,2,2,0,1,1,1,1,1,1,1,2,2,2,Singapore,Malaysia
+999A1,395,RCEP (Regional Comprehensive Economic Partnership) Agreement,2,2,2,0,1,1,1,1,1,1,1,2,2,2,Singapore,Myanmar
+999A1,395,RCEP (Regional Comprehensive Economic Partnership) Agreement,2,2,2,0,1,1,1,1,1,1,1,2,2,2,Singapore,New Zealand
+999A1,395,RCEP (Regional Comprehensive Economic Partnership) Agreement,2,2,2,0,1,1,1,1,1,1,1,2,2,2,Singapore,Philippines
+999A1,395,RCEP (Regional Comprehensive Economic Partnership) Agreement,2,2,2,0,1,1,1,1,1,1,1,2,2,2,Singapore,South Korea
+999A1,395,RCEP (Regional Comprehensive Economic Partnership) Agreement,2,2,2,0,1,1,1,1,1,1,1,2,2,2,Singapore,Thailand
+999A1,395,RCEP (Regional Comprehensive Economic Partnership) Agreement,2,2,2,0,1,1,1,1,1,1,1,2,2,2,Singapore,Vietnam

@@ -41,3 +41,5 @@ agreementScoresMerged = agreementScoresMerged.apply(ensure_singapore_first, axis
 
 # Keeping only relevant columns
 agreementScoresMerged = agreementScoresMerged[['StateName1', 'StateName2', 'year', 'IdealPointDistance']]
+
+agreementScoresMerged.to_csv("../data/AgreementScoresMerged.csv", index=False)
