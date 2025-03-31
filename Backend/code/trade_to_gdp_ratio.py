@@ -8,6 +8,7 @@ columns_to_drop = ['Indicator Name', 'Indicator Code']
 trade_to_gdp_ratio = trade_to_gdp_ratio.drop(columns_to_drop, axis = 1)
 trade_to_gdp_ratio = trade_to_gdp_ratio.iloc[:, :66]
 
-trade_to_gdp_ratio_clean = terms_of_trade.melt(id_vars=['Country Name', 'Country Code'], var_name='Year', value_name='Value')
+trade_to_gdp_ratio_clean = trade_to_gdp_ratio.melt(id_vars=['Country Name', 'Country Code'], var_name='Year', value_name='Value')
 
 #trade_to_gdp_ratio_clean.to_excel("trade_to_gdp_ratio_clean.xlsx", index=False)
+trade_to_gdp_ratio_clean.to_csv("../data/trade_to_gdp_ratio_clean.csv", index=False)

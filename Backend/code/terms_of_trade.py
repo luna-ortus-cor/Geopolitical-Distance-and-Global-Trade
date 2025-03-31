@@ -28,3 +28,4 @@ terms_of_trade_long["adjusted_ratio"] = terms_of_trade_long.apply(
 )
 
 #terms_of_trade_long.to_excel("terms_of_trade_clean.xlsx", index=False)
+terms_of_trade_long.to_csv("../data/terms_of_trade_clean.csv", index=False)
