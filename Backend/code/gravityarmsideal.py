@@ -57,18 +57,3 @@ gravity7 = gravity6.drop(columns_to_drop, axis = 1)
 # Accounting for NA/NaN values (might be bad to drop NA adjustedexport values as it consists of no exports too)
 gravityfinal = gravity7.dropna(subset=['IdealPointDistance', 'pop_d', 'gdp_d', 'adjustedexport', 'comrelig'])
 gravityfinal.loc[:, 'armsintensity'] = gravityfinal['armsintensity'].fillna(0)
-
-merged_df = gravity5.merge(
-    agreementScoresMerged[(agreementScoresMerged['year'] >= 1965) & (agreementScoresMerged['year'] <= 2020)],
-    left_on=['country_d', 'year'],
-    right_on=['StateName2', 'year'],
-    how='right'
-)
-
-# Identify unmatched rows (i.e., those where country_d is NaN after the merge)
-unmatched = merged_df[merged_df['country_d'].isna()]
-
-# Get unique (StateName2, year) pairs that didn't match
-unmatched_pairs = unmatched[['StateName2']].drop_duplicates()
-
-print(unmatched_pairs['StateName2'].unique())
