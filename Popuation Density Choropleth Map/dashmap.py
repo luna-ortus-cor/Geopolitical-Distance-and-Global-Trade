@@ -3,7 +3,7 @@ import plotly.express as px
 import pandas as pd
 
 # Load the dataset
-df = pd.read_csv("cleaned_population_density_time.csv")
+df = pd.read_csv("merged_population_density_gdp.csv")
 
 app = Dash(__name__)
 
@@ -52,7 +52,8 @@ app.layout = html.Div(style={"margin":"50px"}, children=[
         #details tab
         dcc.Tab(label="Details", value="details", children=[
             html.H2(id="details-title", style={"textAlign":"center"}),
-            dcc.Graph(id="line-chart"), 
+            dcc.Graph(id="line-chart"),
+            html.Div(id="country-gdp", style={"margin-top": "10px", "font-weight": "bold"}),
             html.Span("Click "),
             html.Button("here", id="go-to-recommend", style={"color":"blue"}),
             html.Span(" to view recommendations for export strategies to the selected country")
@@ -129,26 +130,43 @@ def update_map(selected_countries):
 #click on the map to go to details tab, update details tab's title and chart
 #click to switch to recommendation tab
 @app.callback(
-    Output("tabs", "value"),
-    Output("details-title", "children"),
+    [Output("tabs", "value"),
+     Output("details-title", "children"),
+     Output("country-gdp", "children")],  # Output for displaying GDP
     Input("choropleth-map", "clickData"),
     Input("go-to-recommend", "n_clicks"),
     prevent_initial_call=True
 )
+
 def go_to_details(clickData, n_clicks):
-    ctx=callback_context
+    ctx = callback_context
     if not ctx.triggered:
         raise exceptions.PreventUpdate
-    trigger_id=ctx.triggered[0]["prop_id"].split(".")[0]
-    if trigger_id=="choropleth-map":
+    trigger_id = ctx.triggered[0]["prop_id"].split(".")[0]
+
+    if trigger_id == "choropleth-map":
         clicked_country = clickData["points"][0]["location"]
-        country_data = df[df["Country Code"] == clicked_country]
+        # Extracting the most recent available year instead
+        latest_year = df[df["Country Code"] == clicked_country]["Year"].max()
+        country_data = df[(df["Country Code"] == clicked_country) & (df["Year"] == latest_year)]  # Filter the dataframe for the clicked country and year
+        
         if country_data.empty:
-            return "details", "No data available for selected country."
-        country_name=country_data.iloc[0]["name"]
-        return "details", f"Visualization for {country_name}"
+            return "details", "No data available for selected country.", ""
+
+        country_name = country_data.iloc[0]["name"]
+        country_gdp = country_data.iloc[0]["GDP"]  # GDP column in your dataframe
+
+        # Title for the Details tab
+        details_title = f"Visualization for {country_name}"
+
+        # GDP text to be displayed
+        gdp_text = f"GDP: ${country_gdp:,.2f}"
+
+        return "details", details_title, gdp_text
+
     elif trigger_id == "go-to-recommend":
-        return "recommendations", ""
+        return "recommendations", "", ""
+
     raise exceptions.PreventUpdate
     
 # Run the app
