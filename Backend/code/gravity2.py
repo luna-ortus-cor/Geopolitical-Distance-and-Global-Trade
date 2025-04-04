@@ -27,6 +27,9 @@ gravity3['tradeflow_comtrade_o'] = gravity3['tradeflow_comtrade_o'] * 1000
 gravity4 = gravity3.merge(cpi, left_on='year', right_on='Year', how='left').drop('Year', axis=1)
 base_year = 2020
 base_cpi = cpi.loc[cpi['Year'] == base_year, 'Annual'].values[0]
-gravity4['adjustedexport'] = gravity4['tradeflow_comtrade_o'] * (base_cpi / gravity4['Annual'])
+gravity4['tradeflow_comtrade_o'] = gravity4['tradeflow_comtrade_o'] * (base_cpi / gravity4['Annual'])
+gravity4['tradeflow_comtrade_d'] = gravity4['tradeflow_comtrade_d'] * (base_cpi / gravity4['Annual'])
+gravity4['tradeflow_imf_o'] = gravity4['tradeflow_imf_o'] * (base_cpi / gravity4['Annual'])
+gravity4['tradeflow_imf_d'] = gravity4['tradeflow_imf_d'] * (base_cpi / gravity4['Annual'])
 
-gravity4.to_csv("../data/gravity_sg.csv", index=False)
+gravity4.to_csv("../data/Gravity_Adjusted.csv", index=False)
