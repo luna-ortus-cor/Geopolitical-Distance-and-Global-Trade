@@ -4,6 +4,8 @@ import pandas as pd
 
 # Load the dataset
 df = pd.read_csv("Frontend/Data/gdi_cleaned.csv")
+# Only take years from 1989 to 2020
+df = df[(df["Year"] >= 1989) & (df["Year"] <= 2020)]
 
 app = Dash(__name__)
 
