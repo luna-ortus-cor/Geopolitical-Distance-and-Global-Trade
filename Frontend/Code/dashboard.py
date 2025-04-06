@@ -196,7 +196,7 @@ def update_map(selected_countries):
         color="GDI",
         hover_name="Name",
         animation_frame="Year",  # Enables animation
-        color_continuous_scale="Plasma",  # More distinct colors
+        color_continuous_scale=["#08306b", "#4292c6", "#f7fbff"],  # More distinct colors
         projection="natural earth",
         range_color=[df["GDI"].quantile(0.05), df["GDI"].quantile(0.95)]  # Avoid extreme outliers
     )
@@ -288,14 +288,18 @@ def update_line_chart(clickData, selected_group):
     if country_exports.empty:
         return px.line(title=f"No export data available for {country_name}")
 
+    country_exports["Export by SG Volume"] *= 1000  # Convert to actual USD
     fig = px.line(
         country_exports,
         x="Year",
         y="Export by SG Volume",
-        title="Singapore's Export Volume to selected country",
+        title="Singapore's Export Volume to Selected Country",
         markers=True
     )
-    fig.update_layout(transition_duration=500)
+    fig.update_layout(
+        yaxis_title="Export Volume (US$)" ,
+        yaxis_tickformat=",.2s" 
+    )
 
     return fig
 
