@@ -1,9 +1,9 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css');
 
 .banner {
-    height: 5.5rem;
+    height: 4.8rem;
     padding: 0rem 2rem 0rem;
-    background-color: #d8d8d8;;
+    background-color: #235284;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -11,8 +11,9 @@
 }
 
 .banner-title {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
+    color: white;
 }
 
 .row {
@@ -23,12 +24,12 @@
     padding: 0;
 }
 
-.four.columns {
-    margin-right: 16px;  
+.three.columns {
+    margin-right: 12px;  
     padding: 0;
 }
 
-.eight.columns {
+.nine.columns {
     margin-left: 0;
     padding: 0;
 }
@@ -36,10 +37,12 @@
 /* #left-section-3 */ 
 #left-section-1,
 #left-section-2 {
-    background-color: #f4f4f4;
+    background-color: #F4F5F7;
     font-weight: 500;
     font-size: 14px;
     padding-left: 12px;
+    margin: 0;
+    padding: 0;
 }
 
 #left-column,
@@ -48,12 +51,25 @@
     flex-direction: column;
     height: 100%;
     flex-grow: 1;
-    margin-top: 10px;
+    margin-top: 8px;
 }
 
 #left-column {
     background-color: white;
     padding: 0;
+}
+
+.section-title {
+    background-color: #8DCFEC;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 6px 16px;  
+    width: 100%;
+    box-sizing: border-box;
+}
+.section-body {
+    padding-left: 16px; 
 }
 
 #right-column {
@@ -62,21 +78,23 @@
     padding: 10px;
 }
 
-#tab {
+.tab {
     display: flex !important;
     align-items: center !important;
-    justify-content: center;
-    height: 20px !important;         
-    padding: 0 8px !important;       
-    font-size: 12px !important;      
-    font-weight: 600;
-    line-height: 1;
+    justify-content: center !important;
+    height: 50px !important; /* or adjust smaller/larger */
+    font-weight: bold;
+    padding: 0 !important;
+    margin: 0 !important;
+    background-color: #F4F5F7 !important;
+    border-color: #DADFE3 !important;
 }
+
 
 /*set a min height to force full-page stretch */
 html, body, #app-container {
     height: 100%;
-}
+    color: #333333;}
 
 /* Default style for both dropdowns */
 #region-dropdown .Select-control,
@@ -103,7 +121,6 @@ html, body, #app-container {
     max-height: 120px;
     overflow-y: auto;
 }
-
 
 
 

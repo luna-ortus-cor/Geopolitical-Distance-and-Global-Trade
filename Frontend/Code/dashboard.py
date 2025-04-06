@@ -16,152 +16,135 @@ app = Dash(__name__)
 app.layout = html.Div(id="app-container", 
     children=[
         #banner
-        html.Div(id="banner", className="banner",
-            children=[html.Div("Geopolitical Distance Dashboard", className="banner-title")
-            ]
-        ),
+        html.Div(id="banner", className="banner", children=[html.Div("Geopolitical Distance Dashboard", className="banner-title")]),
         #row container for left and right columns
-        html.Div(className="row", 
-            children=[
-                #left column
-                html.Div(id="left-column", className="four columns", 
-                    children=[
-                        html.Div(id="left-section-1",
-                            children=[
-                                #instruction card and dropdown
-                                html.Div(id="instruction-card",
-                                    children=[
-                                        html.H5("Explore the Dashboard", style={"color":"cadetblue"}),
-                                        html.Ul([
-                                            html.Li("Explore geopolitical distances by selecting a region or one or more countries of interest."),
-                                            html.Li("Click on a country in the heatmap to view detailed trade-related visualizations."),
-                                            html.Li("Press the play button to animate changes in geopolitical distance over time.")
-                                        ])
-                                    ]
+        html.Div(className="row", children=[
+            #left column
+            html.Div(id="left-column", className="three columns", 
+                children=[
+                    html.Div(id="left-section-1", children=[
+                        html.Div(id="instruction-card", children=[
+                            html.Div(className="section-header", children=[
+                                html.H5("Explore the Dashboard", className="section-title")
+                            ]),
+                            html.Div(className="section-body", children=[                            html.H6([
+                                "Our dashboard helps ",
+                                html.Span("Singapore-based businesses", style={"fontWeight": "bold", "color":"#235284"}),
+                                " choose better export partners by showing geopolitical relationships and trade data."
+                                ], style={"marginBottom":"4px"}
+                            ),                 
+                            html.Ul(children=[
+                                html.Li("Explore the heatmap to view countries' geopolitical distances from Singapore (Lower GDI means closer ties)"),
+                                html.Li("Scroll through time to see how GDI changed"),
+                                html.Li("Click any country in the map to see more detailed trade-related visualizations"),
+                                html.Li("Go to recommendations tab to get personalized export advice")                                       
+                            ], style={"marginBottom":"4px"}),
+                            html.Div(id="dropdown", children=[
+                                #region dropdown              
+                                dcc.Dropdown(
+                                    id="region-dropdown",
+                                    placeholder="Select a Region",
+                                    options= [{"label": "World", "value": "World"}]  + [{"label": region, "value": region} for region in df["region"].unique()],
+                                    style={
+                                        "width": "260px",
+                                        "display": "block",
+                                        "padding": "3px",
+                                        "borderRadius": "5px",
+                                        "border": "1px solid #ccc",
+                                        "boxShadow": "2px 2px 5px rgba(0,0,0,0.1)",
+                                        "fontSize": "15px"},
+                                    multi=False
                                 ),
-                                html.Div(
-                                    children=[
-                                        #region dropdown              
-                                        dcc.Dropdown(
-                                            id="region-dropdown",
-                                            placeholder="Select a Region",
-                                            options= [{"label": "World", "value": "World"}]  + [{"label": region, "value": region} for region in df["region"].unique()],
-                                            style={
-                                                "width": "360px",
-                                                "display": "block",
-                                                "padding": "3px",
-                                                "borderRadius": "5px",
-                                                "border": "1px solid #ccc",
-                                                "boxShadow": "2px 2px 5px rgba(0,0,0,0.1)",
-                                                "fontSize": "15px"},
-                                            multi=False
+                                #country dropdown
+                                dcc.Dropdown(
+                                    id="country-dropdown",
+                                    placeholder="Select a Country",
+                                    options=["World"]+[country for country in df["Name"].unique()],
+                                    style={
+                                        "width": "260px",
+                                        "display": "block",
+                                        "padding": "3px",
+                                        "borderRadius": "5px",
+                                        "border": "1px solid #ccc",
+                                        "boxShadow": "2px 2px 5px rgba(0,0,0,0.1)",
+                                        "fontSize": "15px"},
+                                    multi=True
+                                )],style={"marginBottom":"10px"}
+                            )]),
+                        ])
+                    ]),
+                    #data description
+                    html.Div(id="left-section-2", style={"marginTop":"10px"}, children=[
+                        html.Div(className="section-header", children=[
+                            html.H5("About our Data", className="section-title")
+                        ]),
+                    ])
+                ]          
+            ),
+            #right column
+            html.Div(id="right-column", className="nine columns",
+                children=[
+                    dcc.Tabs(id="tabs", value="heatmap", persistence=True, 
+                        children=[
+                            #Heatmap Tab
+                            dcc.Tab(label="HeatMap", value="heatmap", 
+                                children=[
+                                html.H5('Animated Geopolitical Distance Over Time', style={"textAlign":"center", "margin-top":"30px", "fontWeight":"bold"}),  
+                                # Choropleth map
+                                dcc.Loading(dcc.Graph(id="choropleth-map"), type="cube"),
+                                # Country info display
+                                html.Div(id="country-info", style={"margin-top": "20px", "font-weight": "bold", "marginLeft":"40px"})
+                                ]
+                            ),
+                            #details tab
+                            dcc.Tab(label="Details", value="details",
+                                children=[
+                                    html.Div(children=[
+                                        #title of detail tab
+                                        html.H5(id="details-title", children="Please Click a Country on the Map to View Details", style={"textAlign":"center", "margin-top":"30px", "fontWeight":"bold"}),
+                                        #Dropdown to select Product Groups
+                                        html.Div(children=[
+                                            dcc.Dropdown(
+                                                id="product-group-dropdown",
+                                                placeholder="Select a Product Group",
+                                                style={
+                                                    "width": "200px",
+                                                    "display": "block",
+                                                    "height":"30px",
+                                                    "padding": "3px",
+                                                    "borderRadius": "5px",
+                                                    "border": "1px solid #ccc",
+                                                    "boxShadow": "2px 2px 5px rgba(0,0,0,0.1)",
+                                                    "fontSize": "15px",
+                                                    "fontWeight":"normal"
+                                                }
+                                            )], style={"marginLeft":"40px"}
                                         ),
-                                        #country dropdown
-                                        dcc.Dropdown(
-                                            id="country-dropdown",
-                                            placeholder="Select a Country",
-                                            options=["World"]+[country for country in df["Name"].unique()],
-                                            style={
-                                                "width": "360px",
-                                                "display": "block",
-                                                "padding": "3px",
-                                                "borderRadius": "5px",
-                                                "border": "1px solid #ccc",
-                                                "boxShadow": "2px 2px 5px rgba(0,0,0,0.1)",
-                                                "fontSize": "15px"},
-                                            multi=True
-                                        )
-                                    ],
-                                    style={"marginBottom":"10px"}
-                                )    
-                            ], 
-                        ),
-                        #data description
-                        html.Div(id="left-section-2", style={"marginTop":"10px"},
-                            children=[
-                                html.H5("About our Data", style={"color":"cadetblue"})
-                            ]
-                        ), 
-                        # html.Div(id="left-section-3", style={"marginTop":"10px"},
-                        #     children=[
-                        #         html.H5("About our Model", style={"color":"cadetblue"})
-                        #     ]
-                        # )
-                    ]          
-                ),
-                #right column
-                html.Div(id="right-column", className="eight columns",
-                    children=[
-                        dcc.Tabs(id="tabs", value="heatmap", persistence=True, 
-                            children=[
-                                #Heatmap Tab
-                                dcc.Tab(label="HeatMap", value="heatmap", 
-                                    children=[
-                                    html.H5('Animated Geopolitical Distance Over Time', style={"textAlign":"center", "margin-top":"20px", "fontWeight":"bold"}),  
-                                    # Choropleth map
-                                    dcc.Loading(dcc.Graph(id="choropleth-map"), type="cube"),
-                                    # Country info display
-                                    html.Div(id="country-info", style={"margin-top": "20px", "font-weight": "bold", "marginLeft":"40px"})
-                                    ]
-                                ),
-                                #details tab
-                                dcc.Tab(label="Details", value="details",
-                                    children=[
-                                        html.Div(
-                                            children=[
-                                                #title of detail tab
-                                                html.H5(id="details-title", style={"textAlign":"center", "margin-top":"20px", "fontWeight":"bold"}),
-                                                #Dropdown to select Product Groups
-                                                html.Div(
-                                                    children=[
-                                                        dcc.Dropdown(
-                                                            id="product-group-dropdown",
-                                                            placeholder="Select a Product Group",
-                                                            style={
-                                                                "width": "200px",
-                                                                "display": "block",
-                                                                "height":"30px",
-                                                                "padding": "3px",
-                                                                "borderRadius": "5px",
-                                                                "border": "1px solid #ccc",
-                                                                "boxShadow": "2px 2px 5px rgba(0,0,0,0.1)",
-                                                                "fontSize": "15px",
-                                                                "fontWeight":"normal"
-                                                            }
-                                                        )
-                                                    ],
-                                                    style={"marginLeft":"40px"}
-                                                ),
-                                                # Line chart for export volume
-                                                dcc.Graph(id="line-chart", style={"height": "400px"}),
-                                                html.Span("Click ", style={"marginLeft":"40px"}),
-                                                html.Button("here", id="go-to-recommend", style={"color":"blue"}),
-                                                html.Span(" to view recommendations for export strategies to the selected country")
-                                            ],
-                                        ),
+                                        # Line chart for export volume
+                                        dcc.Graph(id="line-chart", style={"height": "400px"}),
+                                        html.Span("Click ", style={"marginLeft":"40px"}),
+                                        html.Button("here", id="go-to-recommend", style={"color":"blue"}),
+                                        html.Span(" to view recommendations for export strategies to the selected country"),
                                         #trade to gdp chart
-                                        html.Div(
-                                            children=[dcc.Graph(id="gdp-chart", style={"height": "400px"})
-                                            ]
-                                        )
-                                    ]
-                                ),                   
-                                #recommendation tab
-                                dcc.Tab(label="Recommendations", value="recommendations", children=[])
-                            ]
-                        )
-                    ], 
-                    style={
-                        "padding": "2px 2px 2px 0px",
-                        "fontSize": "13px",
-                        "border": "1px solid #ccc",
-                        "borderBottom": "none",
-                        "cursor": "pointer",
-                        "borderTopLeftRadius": "6px",
-                        "borderTopRightRadius": "6px",
-                        "fontWeight":"bold",
-                    }
-                )
+                                        html.Div(children=[dcc.Graph(id="gdp-chart", style={"height": "400px"})])
+                                        ]
+                                    ),
+                                ]
+                            ),                   
+                            #recommendation tab
+                            dcc.Tab(label="Recommendations", value="recommendations", children=[])
+                        ],
+                    )
+                ], style={
+                    "padding": "2px 2px 2px 0px",
+                    "fontSize": "13px",
+                    "border": "1px solid #ccc",
+                    "borderBottom": "none",
+                    "cursor": "pointer",
+                    "borderTopLeftRadius": "6px",
+                    "borderTopRightRadius": "6px",
+                    "fontWeight":"bold",
+                })
             ]
         )
     ]
@@ -262,7 +245,7 @@ def go_to_details(clickData, n_clicks):
     trigger_id = ctx.triggered[0]["prop_id"].split(".")[0]
     
     # Initialize default title
-    title = "No data available for selected country."
+    title="Please Click a Country on the Map to View Details"
 
     # Handle choropleth-map click
     if trigger_id == "choropleth-map" and clickData is not None:
