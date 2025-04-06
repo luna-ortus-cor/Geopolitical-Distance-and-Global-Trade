@@ -1,0 +1,117 @@
+/* Include Skeleton CSS */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css');
+
+.banner {
+    height: 5.5rem;
+    padding: 0rem 2rem 0rem;
+    background-color: #d8d8d8;;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 2rem;
+}
+
+.banner-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.row {
+    display: flex;
+    align-items: stretch;
+    height: 100%; /* ensure row takes full height */
+    margin: 0;
+    padding: 0;
+}
+
+.four.columns {
+    margin-right: 16px;  
+    padding: 0;
+}
+
+.eight.columns {
+    margin-left: 0;
+    padding: 0;
+}
+
+#left-section-1,
+#left-section-2 {
+    background-color: #f4f4f4;
+}
+
+#left-column,
+#right-column {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex-grow: 1;
+    margin-top: 10px;
+}
+
+#left-column {
+    background-color: white;
+    padding: 0;
+}
+
+#right-column {
+    background-color: white;
+    flex-grow: 1;
+    padding: 10px;
+}
+
+#tab {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center;
+    height: 20px !important;         
+    padding: 0 8px !important;       
+    font-size: 12px !important;      
+    font-weight: 600;
+    line-height: 1;
+}
+
+/*set a min height to force full-page stretch */
+html, body, #app-container {
+    height: 100%;
+}
+
+#left-section-1,
+#left-section-2 {
+    font-weight: 400;
+    font-size: 14px;
+    padding-left: 12px;
+  }
+
+/* Default style for both dropdowns */
+#region-dropdown .Select-control,
+#country-dropdown .Select-control {
+    min-height: 30px !important;
+    height: 30px !important;
+    box-sizing: border-box;
+    align-items: center;
+    display: flex;
+}
+
+/* When country dropdown has values, let it expand */
+#country-dropdown .Select.has-value .Select-control {
+    height: auto !important;
+    min-height: 30px !important;
+    flex-wrap: wrap !important;
+    align-items: flex-start !important;
+}
+
+/* Multi-value wrapper: scrollable */
+#country-dropdown .Select-multi-value-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+
+
+
+
+
+
+  
