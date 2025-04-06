@@ -28,7 +28,7 @@ app.layout = html.Div(id="app-container",
                     children=[
                         html.Div(id="left-section-1",
                             children=[
-                                #instruction card
+                                #instruction card and dropdown
                                 html.Div(id="instruction-card",
                                     children=[
                                         html.H5("Explore the Dashboard", style={"color":"cadetblue"}),
@@ -76,11 +76,17 @@ app.layout = html.Div(id="app-container",
                                 )    
                             ], 
                         ),
+                        #data description
                         html.Div(id="left-section-2", style={"marginTop":"10px"},
                             children=[
-                                html.H5("About our data", style={"color":"cadetblue"})
+                                html.H5("About our Data", style={"color":"cadetblue"})
                             ]
-                        ) 
+                        ), 
+                        # html.Div(id="left-section-3", style={"marginTop":"10px"},
+                        #     children=[
+                        #         html.H5("About our Model", style={"color":"cadetblue"})
+                        #     ]
+                        # )
                     ]          
                 ),
                 #right column
@@ -103,6 +109,7 @@ app.layout = html.Div(id="app-container",
                                     children=[
                                         html.Div(
                                             children=[
+                                                #title of detail tab
                                                 html.H5(id="details-title", style={"textAlign":"center", "margin-top":"20px", "fontWeight":"bold"}),
                                                 #Dropdown to select Product Groups
                                                 html.Div(
@@ -132,9 +139,9 @@ app.layout = html.Div(id="app-container",
                                                 html.Span(" to view recommendations for export strategies to the selected country")
                                             ],
                                         ),
+                                        #trade to gdp chart
                                         html.Div(
-                                            children=[dcc.Graph(id="gdp-chart", style={"height": "400px"}),
-                                            html.H1()
+                                            children=[dcc.Graph(id="gdp-chart", style={"height": "400px"})
                                             ]
                                         )
                                     ]
@@ -312,12 +319,12 @@ def update_line_chart(clickData, selected_group):
         yaxis_title="Export Volume (US$)" ,
         yaxis_tickformat=",.2s" 
     )
-    gdp_chart_data=trade_to_gdp[trade_to_gdp["Country Name"] == country_name]
+    gdp_chart_data=trade_to_gdp[trade_to_gdp["Country Code"] == clicked_country]
     gdp_chart = px.line(
         gdp_chart_data,
         x="Year",
         y="Value",
-        title="Trade to GDP Ratio of the Selected Country Over Years",
+        title="Selected Country's Trade-to-GDP Ratio Over Time",
         markers=True
     )
     gdp_chart.update_layout(

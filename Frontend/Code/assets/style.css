@@ -1,4 +1,3 @@
-/* Include Skeleton CSS */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css');
 
 .banner {
@@ -34,9 +33,13 @@
     padding: 0;
 }
 
+/* #left-section-3 */ 
 #left-section-1,
 #left-section-2 {
     background-color: #f4f4f4;
+    font-weight: 500;
+    font-size: 14px;
+    padding-left: 12px;
 }
 
 #left-column,
@@ -74,13 +77,6 @@
 html, body, #app-container {
     height: 100%;
 }
-
-#left-section-1,
-#left-section-2 {
-    font-weight: 400;
-    font-size: 14px;
-    padding-left: 12px;
-  }
 
 /* Default style for both dropdowns */
 #region-dropdown .Select-control,
