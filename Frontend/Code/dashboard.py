@@ -5,6 +5,7 @@ import pandas as pd
 # Load the datasets
 df = pd.read_csv("Frontend/Data/gdi_cleaned.csv")
 exports_df = pd.read_csv("Frontend/Data/combined_trade_volume.csv")
+trade_to_gdp = pd.read_csv("Backend/data/trade_to_gdp_ratio_clean.csv")
 
 # Only take years from 1989 to 2020
 df = df[(df["Year"] >= 1989) & (df["Year"] <= 2020)]
@@ -98,36 +99,46 @@ app.layout = html.Div(id="app-container",
                                     ]
                                 ),
                                 #details tab
-                                dcc.Tab(label="Details", value="details", 
+                                dcc.Tab(label="Details", value="details",
                                     children=[
-                                    html.H5(id="details-title", style={"textAlign":"center", "margin-top":"20px", "fontWeight":"bold"}),
-                                    #Dropdown to select Product Groups
-                                    html.Div(
-                                        children=[
-                                            dcc.Dropdown(
-                                                id="product-group-dropdown",
-                                                placeholder="Select a Product Group",
-                                                style={
-                                                    "width": "200px",
-                                                    "display": "block",
-                                                    "height":"30px",
-                                                    "padding": "3px",
-                                                    "borderRadius": "5px",
-                                                    "border": "1px solid #ccc",
-                                                    "boxShadow": "2px 2px 5px rgba(0,0,0,0.1)",
-                                                    "fontSize": "15px"
-                                                }
-                                            )
-                                        ],
-                                        style={"marginLeft":"40px"}
-                                    ),
-                                    # Line chart for export volume
-                                    dcc.Graph(id="line-chart", style={"height": "400px"}),
-                                    html.Span("Click ", style={"marginLeft":"40px"}),
-                                    html.Button("here", id="go-to-recommend", style={"color":"blue"}),
-                                    html.Span(" to view recommendations for export strategies to the selected country")
+                                        html.Div(
+                                            children=[
+                                                html.H5(id="details-title", style={"textAlign":"center", "margin-top":"20px", "fontWeight":"bold"}),
+                                                #Dropdown to select Product Groups
+                                                html.Div(
+                                                    children=[
+                                                        dcc.Dropdown(
+                                                            id="product-group-dropdown",
+                                                            placeholder="Select a Product Group",
+                                                            style={
+                                                                "width": "200px",
+                                                                "display": "block",
+                                                                "height":"30px",
+                                                                "padding": "3px",
+                                                                "borderRadius": "5px",
+                                                                "border": "1px solid #ccc",
+                                                                "boxShadow": "2px 2px 5px rgba(0,0,0,0.1)",
+                                                                "fontSize": "15px",
+                                                                "fontWeight":"normal"
+                                                            }
+                                                        )
+                                                    ],
+                                                    style={"marginLeft":"40px"}
+                                                ),
+                                                # Line chart for export volume
+                                                dcc.Graph(id="line-chart", style={"height": "400px"}),
+                                                html.Span("Click ", style={"marginLeft":"40px"}),
+                                                html.Button("here", id="go-to-recommend", style={"color":"blue"}),
+                                                html.Span(" to view recommendations for export strategies to the selected country")
+                                            ],
+                                        ),
+                                        html.Div(
+                                            children=[dcc.Graph(id="gdp-chart", style={"height": "400px"}),
+                                            html.H1()
+                                            ]
+                                        )
                                     ]
-                                ),
+                                ),                   
                                 #recommendation tab
                                 dcc.Tab(label="Recommendations", value="recommendations", children=[])
                             ]
@@ -265,6 +276,7 @@ def go_to_details(clickData, n_clicks):
     
 @app.callback(
     Output("line-chart", "figure"),
+    Output("gdp-chart", "figure"),
     Input("choropleth-map", "clickData"),
     Input("product-group-dropdown", "value")
 )
@@ -300,8 +312,20 @@ def update_line_chart(clickData, selected_group):
         yaxis_title="Export Volume (US$)" ,
         yaxis_tickformat=",.2s" 
     )
+    gdp_chart_data=trade_to_gdp[trade_to_gdp["Country Name"] == country_name]
+    gdp_chart = px.line(
+        gdp_chart_data,
+        x="Year",
+        y="Value",
+        title="Trade to GDP Ratio of the Selected Country Over Years",
+        markers=True
+    )
+    gdp_chart.update_layout(
+        yaxis_title="Trade to GDP ratio",
+        yaxis_tickformat=",.2s"
+    )
 
-    return fig
+    return fig, gdp_chart
 
 
 
