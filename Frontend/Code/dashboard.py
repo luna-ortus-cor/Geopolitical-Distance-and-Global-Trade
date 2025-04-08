@@ -91,9 +91,10 @@ app.layout = html.Div(id="app-container",
                                 children=[
                                 html.H5('Animated Geopolitical Distance Over Time', style={"textAlign":"center", "margin-top":"30px", "fontWeight":"bold"}),  
                                 # Choropleth map
-                                dcc.Loading(dcc.Graph(id="choropleth-map"), type="cube"),
+                                dcc.Loading(dcc.Graph(id="choropleth-map", 
+                                                      style={"height": "800px", "width": "100%","margin-top": "-30px"}), type="cube"), 
                                 # Country info display
-                                html.Div(id="country-info", style={"margin-top": "20px", "font-weight": "bold", "marginLeft":"40px"})
+                                html.Div(id="country-info", style={"margin-top": "-5px", "font-weight": "bold", "marginLeft":"40px","fontSize": "18px"})
                                 ]
                             ),
                             #details tab
@@ -144,6 +145,7 @@ app.layout = html.Div(id="app-container",
                     "borderTopLeftRadius": "6px",
                     "borderTopRightRadius": "6px",
                     "fontWeight":"bold",
+                    "width": "100%"
                 })
             ]
         )
@@ -201,6 +203,10 @@ def update_map(selected_countries):
         projection="natural earth",
         range_color=[df["GDI"].quantile(0.05), df["GDI"].quantile(0.95)]  # Avoid extreme outliers
     )
+    fig.update_geos(
+    projection_scale=1.2,  #zoom
+    center={"lat": 10, "lon": 0},  # centre the map slightly above earth centre to exclude antartica on loading
+    showcountries=True)
     return fig
 
 # Callback to update the product group dropdown based on the clicked country
