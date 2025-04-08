@@ -89,10 +89,10 @@ app.layout = html.Div(id="app-container",
                             #Heatmap Tab
                             dcc.Tab(label="HeatMap", value="heatmap", 
                                 children=[
-                                html.H5('Animated Geopolitical Distance Over Time', style={"textAlign":"center", "margin-top":"30px", "fontWeight":"bold"}),  
+                                html.H5('Animated Geopolitical Distance Over Time', style={"textAlign":"center", "margin-top":"15px", "fontWeight":"bold"}),  
                                 # Choropleth map
                                 dcc.Loading(dcc.Graph(id="choropleth-map", 
-                                                      style={"height": "800px", "width": "100%","margin-top": "-30px"}), type="cube"), 
+                                                      style={"height": "600px", "width": "100%","margin-top": "-25px"}), type="cube"), 
                                 # Country info display
                                 html.Div(id="country-info", style={"margin-top": "-5px", "font-weight": "bold", "marginLeft":"40px","fontSize": "18px"})
                                 ]
