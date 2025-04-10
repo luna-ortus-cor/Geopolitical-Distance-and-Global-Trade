@@ -79,6 +79,17 @@ app.layout = html.Div(id="app-container",
                         html.Div(className="section-header", children=[
                             html.H5("About our Data", className="section-title")
                         ]),
+                        html.Div([
+                                html.P("Singapore Net Export to Countries Data:", style={"fontWeight": "bold", "marginBottom": "5px"}),
+                                html.P([
+                                    "Data source: World Bank (2025) – ",
+                                    html.A("Learn more about this data", 
+                                           href="https://wits.worldbank.org/CountryProfile/en/Country/SGP/StartYear/1989/EndYear/2022/TradeFlow/Export/Indicator/XPRT-TRD-VL/Partner/BY-COUNTRY/Product/Total", 
+                                             target="_blank",
+                                             style={"color": "#1f77b4", "textDecoration": "underline"})
+                                ])
+                            ], style={"fontSize": "15px", "marginTop": "10px"})
+
                     ])
                 ]          
             ),
