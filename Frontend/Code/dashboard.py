@@ -6,6 +6,7 @@ import pandas as pd
 df = pd.read_csv("Frontend/Data/gdi_cleaned.csv")
 exports_df = pd.read_csv("Frontend/Data/combined_trade_volume.csv")
 trade_to_gdp = pd.read_csv("Backend/data/trade_to_gdp_ratio_clean.csv")
+trade_to_gdp = trade_to_gdp[(trade_to_gdp["Year"]>=1989) & (trade_to_gdp["Year"]<=2022)]
 
 # Only take years from 1989 to 2020
 df = df[(df["Year"] >= 1989) & (df["Year"] <= 2020)]
@@ -89,7 +90,7 @@ app.layout = html.Div(id="app-container",
                             #Heatmap Tab
                             dcc.Tab(label="HeatMap", value="heatmap", 
                                 children=[
-                                html.H5('Animated Geopolitical Distance Over Time', style={"textAlign":"center", "margin-top":"15px", "fontWeight":"bold"}),  
+                                html.H4('Animated Geopolitical Distance Over Time', style={"textAlign":"center", "margin-top":"15px", "fontWeight":"bold"}),  
                                 # Choropleth map
                                 dcc.Loading(dcc.Graph(id="choropleth-map", 
                                                       style={"height": "600px", "width": "100%","margin-top": "-25px"}), type="cube"), 
@@ -127,6 +128,7 @@ app.layout = html.Div(id="app-container",
                                         html.Button("here", id="go-to-recommend", style={"color":"blue"}),
                                         html.Span(" to view recommendations for export strategies to the selected country"),
                                         #trade to gdp chart
+                                        html.Hr(style={'border': '1px solid #ccc'}),
                                         html.Div(children=[dcc.Graph(id="gdp-chart", style={"height": "400px"})])
                                         ]
                                     ),
