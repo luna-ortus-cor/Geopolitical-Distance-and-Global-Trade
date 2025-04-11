@@ -7,6 +7,8 @@ df = pd.read_csv("Frontend/Data/gdi_cleaned.csv")
 exports_df = pd.read_csv("Frontend/Data/combined_trade_volume.csv")
 trade_to_gdp = pd.read_csv("Backend/data/trade_to_gdp_ratio_clean.csv")
 trade_to_gdp = trade_to_gdp[(trade_to_gdp["Year"]>=1989) & (trade_to_gdp["Year"]<=2022)]
+ahs_df = pd.read_csv("Frontend/Data/updated_ahs_cleaned.csv")
+
 
 # Only take years from 1989 to 2020
 df = df[(df["Year"] >= 1989) & (df["Year"] <= 2020)]
@@ -140,7 +142,9 @@ app.layout = html.Div(id="app-container",
                                         html.Span(" to view recommendations for export strategies to the selected country"),
                                         #trade to gdp chart
                                         html.Hr(style={'border': '1px solid #ccc'}),
-                                        html.Div(children=[dcc.Graph(id="gdp-chart", style={"height": "400px"})])
+                                        html.Div(children=[dcc.Graph(id="gdp-chart", style={"height": "400px"})]),
+                                        #tariff chart
+                                        html.Div(children=[dcc.Graph(id="ahs-chart", style={"height": "400px"})])
                                         ]
                                     ),
                                 ]
@@ -286,6 +290,7 @@ def go_to_details(clickData, n_clicks):
 @app.callback(
     Output("line-chart", "figure"),
     Output("gdp-chart", "figure"),
+    Output("ahs-chart", "figure"),
     Input("choropleth-map", "clickData"),
     Input("product-group-dropdown", "value")
 )
@@ -334,7 +339,25 @@ def update_line_chart(clickData, selected_group):
         yaxis_tickformat=",.2s"
     )
 
-    return fig, gdp_chart
+    # AHS Tariff Chart
+    country_ahs = ahs_df[ahs_df["Country"] == country_name]
+    if country_ahs.empty:
+        ahs_fig = px.line(title=f"No AHS data for {country_name}")
+    else:
+        # Clean out "No Data" values
+        country_ahs = country_ahs[country_ahs["AHS Weighted Average (%)"] != "No Data"]
+        country_ahs["AHS Weighted Average (%)"] = country_ahs["AHS Weighted Average (%)"].astype(float)
+
+        ahs_fig = px.line(
+            country_ahs,
+            x="Year",
+            y="AHS Weighted Average (%)",
+            title="Applied Tariff (AHS Weighted Average %) Over Time",
+            markers=True
+        )
+        ahs_fig.update_layout(yaxis_title="Tariff (%)", yaxis_tickformat=".2%")
+
+    return fig, gdp_chart, ahs_fig
 
 
 
