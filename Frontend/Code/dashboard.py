@@ -3,12 +3,11 @@ import plotly.express as px
 import pandas as pd
 
 # Load the datasets
-df = pd.read_csv("Frontend/Data/gdi_cleaned.csv")
-exports_df = pd.read_csv("Frontend/Data/combined_trade_volume.csv")
-trade_to_gdp = pd.read_csv("Backend/data/trade_to_gdp_ratio_clean.csv")
-trade_to_gdp = trade_to_gdp[(trade_to_gdp["Year"]>=1989) & (trade_to_gdp["Year"]<=2022)]
-ahs_df = pd.read_csv("Frontend/Data/updated_ahs_cleaned.csv")
-
+df = pd.read_csv("./../Data/gdi_cleaned.csv")
+exports_df = pd.read_csv("./../Data/combined_trade_volume.csv")
+trade_to_gdp = pd.read_csv("./../../Backend/data/trade_to_gdp_ratio_clean.csv")
+trade_to_gdp = trade_to_gdp[(trade_to_gdp["Year"] >= 1989) & (trade_to_gdp["Year"] <= 2022)]
+ahs_df = pd.read_csv("./../Data/updated_ahs_cleaned.csv")
 
 # Only take years from 1989 to 2020
 df = df[(df["Year"] >= 1989) & (df["Year"] <= 2020)]
@@ -30,70 +29,126 @@ app.layout = html.Div(id="app-container",
                             html.Div(className="section-header", children=[
                                 html.H5("Explore the Dashboard", className="section-title")
                             ]),
-                            html.Div(className="section-body", children=[                            html.H6([
-                                "Our dashboard helps ",
-                                html.Span("Singapore-based businesses", style={"fontWeight": "bold", "color":"#235284"}),
-                                " choose better export partners by showing geopolitical relationships and trade data."
-                                ], style={"marginBottom":"4px"}
-                            ),                 
-                            html.Ul(children=[
-                                html.Li("Explore the heatmap to view countries' geopolitical distances from Singapore (Lower GDI means closer ties)"),
-                                html.Li("Scroll through time to see how GDI changed"),
-                                html.Li("Click any country in the map to see more detailed trade-related visualizations"),
-                                html.Li("Go to recommendations tab to get personalized export advice")                                       
-                            ], style={"marginBottom":"4px"}),
-                            html.Div(id="dropdown", children=[
-                                #region dropdown              
-                                dcc.Dropdown(
-                                    id="region-dropdown",
-                                    placeholder="Select a Region",
-                                    options= [{"label": "World", "value": "World"}]  + [{"label": region, "value": region} for region in df["region"].unique()],
-                                    style={
-                                        "width": "260px",
-                                        "display": "block",
-                                        "padding": "3px",
-                                        "borderRadius": "5px",
-                                        "border": "1px solid #ccc",
-                                        "boxShadow": "2px 2px 5px rgba(0,0,0,0.1)",
-                                        "fontSize": "15px"},
-                                    multi=False
-                                ),
-                                #country dropdown
-                                dcc.Dropdown(
-                                    id="country-dropdown",
-                                    placeholder="Select a Country",
-                                    options=["World"]+[country for country in df["Name"].unique()],
-                                    style={
-                                        "width": "260px",
-                                        "display": "block",
-                                        "padding": "3px",
-                                        "borderRadius": "5px",
-                                        "border": "1px solid #ccc",
-                                        "boxShadow": "2px 2px 5px rgba(0,0,0,0.1)",
-                                        "fontSize": "15px"},
-                                    multi=True
-                                )],style={"marginBottom":"10px"}
-                            )]),
-                        ])
-                    ]),
-                    #data description
-                    html.Div(id="left-section-2", style={"marginTop":"10px"}, children=[
-                        html.Div(className="section-header", children=[
-                            html.H5("About our Data", className="section-title")
-                        ]),
-                        html.Div([
-                                html.P("Singapore Net Export to Countries Data:", style={"fontWeight": "bold", "marginBottom": "5px"}),
-                                html.P([
-                                    "Data source: World Bank (2025) – ",
-                                    html.A("Learn more about this data", 
-                                           href="https://wits.worldbank.org/CountryProfile/en/Country/SGP/StartYear/1989/EndYear/2022/TradeFlow/Export/Indicator/XPRT-TRD-VL/Partner/BY-COUNTRY/Product/Total", 
-                                             target="_blank",
-                                             style={"color": "#1f77b4", "textDecoration": "underline"})
+                            html.Div(className="section-body",
+                                     children=[
+                                            # New GeoDistance Overview and Instructions
+                                            html.P(["Our dashboard helps ",
+                                                     html.Span("Singapore-based businesses", style={"fontWeight": "bold", "color":"#235284"}),
+                                                                " choose better export partners by analysing geopolitical relations and trade data."
+                                                            ], style={"marginBottom":"4px"}
+                                            ),
+                                            html.P( ["We have introduced a new ",
+                                                html.Span("geopolitical distance index (GDI)", style={"fontWeight": "bold", "color":"#235284"}),
+                                                            ", combining key factors like free trade agreements, arms trade relations, language/cultural commonalities, political alignment, and democracy levels to gauge each country's geopolitical proximity to Singapore. Lower values indicate closer ties, while higher values signal greater distance.",
+                                                ], style={"marginBottom": "12px"}
+                                            ),
+                                            html.H6(html.Span("Navigate the World Map"), style={"fontWeight": "bold", "color":"#235284", "marginBottom": "0"}),
+                                            html.Ul(children=[
+                                                html.Li(html.Span("Use the slider to see how GDI changes over time."), style={"marginBottom": "0"}),
+                                                html.Li("Click on any country for deeper insights.")
+                                            ], style={"marginBottom": "12px"}),
+
+                                            html.H6(html.Span("Filter by Region or Country"), style={"fontWeight": "bold", "color":"#235284", "marginBottom": "0"}),
+
+                                            # Region and Country dropdowns
+                                            html.Div(
+                                                id="dropdown",
+                                                children=[
+                                                    dcc.Dropdown(
+                                                        id="region-dropdown",
+                                                        placeholder="Select a Region",
+                                                        options=[{"label": "World", "value": "World"}] + [
+                                                            {"label": region, "value": region}
+                                                            for region in df["region"].unique()
+                                                        ],
+                                                        style={
+                                                            "width": "260px",
+                                                            "display": "block",
+                                                            "padding": "3px",
+                                                            "borderRadius": "5px",
+                                                            "border": "1px solid #ccc",
+                                                            "boxShadow": "2px 2px 5px rgba(0,0,0,0.1)",
+                                                            "fontSize": "15px"
+                                                        },
+                                                        multi=False
+                                                    ),
+                                                    dcc.Dropdown(
+                                                        id="country-dropdown",
+                                                        placeholder="Select a Country",
+                                                        options=["World"] + [country for country in df["Name"].unique()],
+                                                        style={
+                                                            "width": "260px",
+                                                            "display": "block",
+                                                            "padding": "3px",
+                                                            "borderRadius": "5px",
+                                                            "border": "1px solid #ccc",
+                                                            "boxShadow": "2px 2px 5px rgba(0,0,0,0.1)",
+                                                            "fontSize": "15px"
+                                                        },
+                                                        multi=True
+                                                    )
+                                                ],
+                                                style={"marginBottom": "10px"}
+                                            )
+                                        ]
+                                    )
+                                ]
+                            )
+                        ]
+                    ),
+                    # Data description and Sources
+                    html.Div(
+                        id="left-section-2",
+                        style={"marginTop": "10px"},
+                        children=[
+                            html.Div(
+                                className="section-header",
+                                children=[html.H5("About our Data", className="section-title")]
+                            ),
+                            html.Div([
+                                html.P("GDI measure data sources:", style={"fontWeight": "bold", "marginBottom": "5px"}),
+                                html.Ul([
+                                    html.Li([
+                                        html.A(
+                                            "CEPII Gravity Dataset",
+                                            href="https://www.cepii.fr/CEPII/en/bdd_modele/bdd_modele_item.asp?id=8",
+                                            target="_blank",
+                                            style={"color": "#1f77b4", "textDecoration": "underline"}
+                                        ),
+                                        " – Offers trade friction metrics such as distance, shared language, colonial ties."
+                                    ]),
+                                    html.Li([
+                                        html.A(
+                                            "SIPRI Arms Transfer Database",
+                                            href="https://armstransfers.sipri.org/ArmsTransfer/TransferRegister",
+                                            target="_blank",
+                                            style={"color": "#1f77b4", "textDecoration": "underline"}
+                                        ),
+                                        " – Provides detailed arms trade data, revealing security and partnership dimensions."
+                                    ]),
+                                    html.Li([
+                                        html.A(
+                                            "UNGA Voting Records",
+                                            href="http://unvotes.org/",
+                                            target="_blank",
+                                            style={"color": "#1f77b4", "textDecoration": "underline"}
+                                        ),
+                                        " – Reflects diplomatic policy alignment among nations."
+                                    ]),
+                                    html.Li([
+                                        html.A(
+                                            "V-Dem Dataset",
+                                            href="https://www.v-dem.net/data/the-v-dem-dataset/country-year-v-dem-core-v15/",
+                                            target="_blank",
+                                            style={"color": "#1f77b4", "textDecoration": "underline"}
+                                        ),
+                                        " – Delivers democracy metrics and governance differences between countries."
+                                    ])
                                 ])
                             ], style={"fontSize": "15px", "marginTop": "10px"})
-
-                    ])
-                ]          
+                        ]
+                    )
+                ]
             ),
             #right column
             html.Div(id="right-column", className="nine columns",
@@ -106,7 +161,12 @@ app.layout = html.Div(id="app-container",
                                 html.H4('Animated Geopolitical Distance Over Time', style={"textAlign":"center", "margin-top":"15px", "fontWeight":"bold"}),  
                                 # Choropleth map
                                 dcc.Loading(dcc.Graph(id="choropleth-map", 
-                                                      style={"height": "600px", "width": "100%","margin-top": "-25px"}), type="cube"), 
+                                                      style={"height": "600px", "width": "100%","margin-top": "-25px"}), type="cube"),
+                                # Additional description beneath the choropleth graph
+                                    html.Div(id="heatmap-description", children=[
+                                        html.P("This animated choropleth map visualizes the geopolitical distance index (GDI) across countries over time. Lower GDI values imply closer geopolitical ties with Singapore, while higher values indicate greater separation.",
+                                               style={"textAlign": "center", "margin": "10px", "fontSize": "14px"})
+                                    ]),
                                 # Country info display
                                 html.Div(id="country-info", style={"margin-top": "-5px", "font-weight": "bold", "marginLeft":"40px","fontSize": "18px"})
                                 ]
@@ -137,18 +197,33 @@ app.layout = html.Div(id="app-container",
                                         ),
                                         # Line chart for export volume
                                         dcc.Graph(id="line-chart", style={"height": "400px"}),
+                                        html.Div(id="line-chart-description", children=[
+                                            html.P("This chart shows Singapore's export volume to the selected country over time. An upward trend can indicate growing demand or more robust trading relationships while a downward trend could signal a potential decline in trade activity. Higher values mean stronger export performance, while lower values reflect weaker market activity.",
+                                                   style={"textAlign": "center", "margin": "10px", "fontSize": "14px"})
+                                        ]),
                                         html.Span("Click ", style={"marginLeft":"40px"}),
                                         html.Button("here", id="go-to-recommend", style={"color":"blue"}),
                                         html.Span(" to view recommendations for export strategies to the selected country"),
                                         #trade to gdp chart
                                         html.Hr(style={'border': '1px solid #ccc'}),
-                                        html.Div(children=[dcc.Graph(id="gdp-chart", style={"height": "400px"})]),
+                                        html.Div(children=[dcc.Graph(id="gdp-chart", style={"height": "400px"}),
+                                                        # Description under the gdp chart
+                                            html.Div(id="gdp-chart-description", children=[
+                                                html.P("This graph displays the trade-to-GDP ratio of the selected country, measuring trade volume relative to the size of its economy. Higher ratios indicate that trade plays a larger role in the country’s economic activity.",
+                                                       style={"textAlign": "center", "margin": "10px", "fontSize": "14px"})
+                                            ])
+                                        ]),
                                         #tariff chart
-                                        html.Div(children=[dcc.Graph(id="ahs-chart", style={"height": "400px"})])
-                                        ]
-                                    ),
-                                ]
-                            ),                   
+                                        html.Hr(style={'border': '1px solid #ccc'}),
+                                        html.Div(children=[dcc.Graph(id="ahs-chart", style={"height": "400px"}),
+                                                        # Description under the AHS tariff chart
+                                            html.Div(id="ahs-chart-description", children=[
+                                                html.P("This visualization tracks the changes in applied tariff rates over time. An increasing trend implies that tariff rates are rising, which may reflect tighter trade policies, potentially raising the cost of imports. A decreasing trend indicates lower tariff rates, suggesting a shift toward a more open trade environment with reduced trade barriers.",
+                                                       style={"textAlign": "center", "margin": "10px", "fontSize": "14px"})
+                                            ])
+                                        ])
+                                    ]),
+                                ]),
                             #recommendation tab
                             dcc.Tab(label="Recommendations", value="recommendations", children=[])
                         ],
@@ -277,7 +352,7 @@ def go_to_details(clickData, n_clicks):
         
         if not country_data.empty:
             country_name = country_data.iloc[0]["Name"]
-            title = f"Visualization for {country_name}"
+            title = f"In-Depth Trade Trends & Analysis for {country_name}"
         else:
             title = "No data available for selected country."
 
