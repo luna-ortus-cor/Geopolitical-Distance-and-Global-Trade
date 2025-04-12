@@ -3,11 +3,11 @@ import plotly.express as px
 import pandas as pd
 
 # Load the datasets
-df = pd.read_csv("./../Data/gdi_cleaned.csv")
-exports_df = pd.read_csv("./../Data/combined_trade_volume.csv")
-trade_to_gdp = pd.read_csv("./../../Backend/data/trade_to_gdp_ratio_clean.csv")
+df = pd.read_csv("Frontend/Data/gdi_cleaned.csv")
+exports_df = pd.read_csv("Frontend/Data/combined_trade_volume.csv")
+trade_to_gdp = pd.read_csv("Backend/data/trade_to_gdp_ratio_clean.csv")
 trade_to_gdp = trade_to_gdp[(trade_to_gdp["Year"] >= 1989) & (trade_to_gdp["Year"] <= 2022)]
-ahs_df = pd.read_csv("./../Data/updated_ahs_cleaned.csv")
+ahs_df = pd.read_csv("Frontend/Data/updated_ahs_cleaned.csv")
 
 # Only take years from 1989 to 2020
 df = df[(df["Year"] >= 1989) & (df["Year"] <= 2020)]
