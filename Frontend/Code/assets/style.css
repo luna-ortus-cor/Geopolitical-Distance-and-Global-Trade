@@ -62,11 +62,15 @@
 .section-title {
     background-color: #8191A5;
     color: white;
-    font-size: 22px;
+    font-size: 21px;
     font-weight: bold;
     padding: 6px 16px;  
     width: 100%;
     box-sizing: border-box;
+    height: 45px;
+    line-height: 36px;
+    display: flex;
+    align-items: center;
 }
 .section-body {
     padding-left: 16px; 

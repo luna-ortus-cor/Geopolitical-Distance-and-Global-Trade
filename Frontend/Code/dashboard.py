@@ -36,21 +36,19 @@ app.layout = html.Div(id="app-container",
                                             html.P(["Our dashboard helps ",
                                                      html.Span("Singapore-based businesses", style={"fontWeight": "bold", "color":"#235284"}),
                                                                 " choose better export partners by analysing geopolitical relations and trade data."
-                                                            ], style={"marginBottom":"4px"}
+                                                            ], style={"marginBottom":"4px", "marginTop":"0px"}
                                             ),
                                             html.P( ["We have introduced a new ",
-                                                html.Span("geopolitical distance index (GDI)", style={"fontWeight": "bold", "color":"#235284"}),
+                                                html.Span("geopolitical Distance Index (GDI)", style={"fontWeight": "bold", "color":"#235284"}),
                                                             ", combining key factors like free trade agreements, arms trade relations, language/cultural commonalities, political alignment, and democracy levels to gauge each country's geopolitical proximity to Singapore. Lower values indicate closer ties, while higher values signal greater distance.",
-                                                ], style={"marginBottom": "12px"}
+                                                ], style={"marginBottom": "0px"}
                                             ),
-                                            html.H6(html.Span("Navigate the World Map"), style={"fontWeight": "bold", "color":"#235284", "marginBottom": "0"}),
+                                            html.H6(html.Span("Navigate the World Map"), style={"fontWeight": "bold", "marginBottom": "0"}),
                                             html.Ul(children=[
                                                 html.Li(html.Span("Use the slider to see how GDI changes over time."), style={"marginBottom": "0"}),
                                                 html.Li("Click on any country for deeper insights.")
-                                            ], style={"marginBottom": "12px"}),
-
-                                            html.H6(html.Span("Filter by Region or Country"), style={"fontWeight": "bold", "color":"#235284", "marginBottom": "0"}),
-
+                                            ], style={"marginBottom": "0px"}),
+                                            html.H6(html.Span("Filter by Region or Country"), style={"fontWeight": "bold", "marginBottom": "0"}),
                                             # Region and Country dropdowns
                                             html.Div(
                                                 id="dropdown",
@@ -63,7 +61,7 @@ app.layout = html.Div(id="app-container",
                                                             for region in df["region"].unique()
                                                         ],
                                                         style={
-                                                            "width": "260px",
+                                                            "width": "200px",
                                                             "display": "block",
                                                             "padding": "3px",
                                                             "borderRadius": "5px",
@@ -78,7 +76,7 @@ app.layout = html.Div(id="app-container",
                                                         placeholder="Select a Country",
                                                         options=["World"] + [country for country in df["Name"].unique()],
                                                         style={
-                                                            "width": "260px",
+                                                            "width": "200px",
                                                             "display": "block",
                                                             "padding": "3px",
                                                             "borderRadius": "5px",
@@ -106,8 +104,8 @@ app.layout = html.Div(id="app-container",
                                 className="section-header",
                                 children=[html.H5("About our Data", className="section-title")]
                             ),
-                            html.Div([
-                                html.P("GDI measure data sources:", style={"fontWeight": "bold", "marginBottom": "5px"}),
+                            html.Div(className="section-body", children=[
+                                html.P("GDI measure data sources:", style={"fontWeight": "bold", "marginBottom": "5px", "marginTop":"0px"}),
                                 html.Ul([
                                     html.Li([
                                         html.A(
@@ -146,7 +144,7 @@ app.layout = html.Div(id="app-container",
                                         " – Delivers democracy metrics and governance differences between countries."
                                     ])
                                 ])
-                            ], style={"fontSize": "15px", "marginTop": "10px"})
+                            ])
                         ]
                     )
                 ]
@@ -159,18 +157,13 @@ app.layout = html.Div(id="app-container",
                             #Heatmap Tab
                             dcc.Tab(label="HeatMap", value="heatmap", 
                                 children=[
-                                html.H4('Animated Geopolitical Distance Over Time', style={"textAlign":"center", "margin-top":"15px", "fontWeight":"bold"}),  
+                                html.H5('Geopolitical Distance Between Singapore and World', style={"textAlign":"center", "margin-top":"15px", "fontWeight":"bold", "marginBottom": "40px"}),  
                                 # Choropleth map
                                 dcc.Loading(dcc.Graph(id="choropleth-map", 
-                                                      style={"height": "600px", "width": "100%","margin-top": "-25px"}), type="cube"),
-                                # Additional description beneath the choropleth graph
-                                    html.Div(id="heatmap-description", children=[
-                                        html.P("This animated choropleth map visualizes the geopolitical distance index (GDI) across countries over time. Lower GDI values imply closer geopolitical ties with Singapore, while higher values indicate greater separation.",
-                                               style={"textAlign": "center", "margin": "10px", "fontSize": "14px"})
-                                    ]),
+                                                      style={"height": "600px", "width": "100%", "marginTop": "0px"}), type="cube"),
                                 # Country info display
-                                html.Div(id="country-info", style={"margin-top": "-5px", "font-weight": "bold", "marginLeft":"40px","fontSize": "18px"})
-                                ]
+                                html.Div(id="country-info", style={"margin-top": "-5px", "font-weight": "bold", "marginLeft":"40px","fontSize": "18px", "marginBottom":"10px"})
+                                ], style={"padding": "10px 20px"} 
                             ),
                             #details tab
                             dcc.Tab(label="Details", value="details",
@@ -202,9 +195,6 @@ app.layout = html.Div(id="app-container",
                                             html.P("This chart shows Singapore's export volume to the selected country over time. An upward trend can indicate growing demand or more robust trading relationships while a downward trend could signal a potential decline in trade activity. Higher values mean stronger export performance, while lower values reflect weaker market activity.",
                                                    style={"textAlign": "center", "margin": "10px", "fontSize": "14px"})
                                         ]),
-                                        html.Span("Click ", style={"marginLeft":"40px"}),
-                                        html.Button("here", id="go-to-recommend", style={"color":"blue"}),
-                                        html.Span(" to view recommendations for export strategies to the selected country"),
                                         #trade to gdp chart
                                         html.Hr(style={'border': '1px solid #ccc'}),
                                         html.Div(children=[dcc.Graph(id="gdp-chart", style={"height": "400px"}),
@@ -222,12 +212,15 @@ app.layout = html.Div(id="app-container",
                                                 html.P("This visualization tracks the changes in applied tariff rates over time. An increasing trend implies that tariff rates are rising, which may reflect tighter trade policies, potentially raising the cost of imports. A decreasing trend indicates lower tariff rates, suggesting a shift toward a more open trade environment with reduced trade barriers.",
                                                        style={"textAlign": "center", "margin": "10px", "fontSize": "14px"})
                                             ])
-                                        ])
+                                        ]),
+                                        html.Span("Click ", style={"marginLeft":"10px", "marginTop":"10px"}),
+                                        html.Button("here", id="go-to-recommend", style={"color":"blue"}),
+                                        html.Span(" to view recommendations for export strategies to the selected country", style={"marginBottom":"10px"})
                                     ]),
                                 ]),
                             #recommendation tab
                             dcc.Tab(label="Recommendations", value="recommendations", children=[
-                                html.H5("Export Strategy Recommendations", className="section-title"),
+                                html.H5("Export Strategy Recommendations", id="recommendation-title", style={"textAlign":"center", "margin-top":"15px", "fontWeight":"bold"}),
                                 html.Div([
                                     # Export Volume Section
                                     html.Div([
@@ -236,57 +229,35 @@ app.layout = html.Div(id="app-container",
                                             html.Span(id="country-name-prediction"),
                                             ": ",
                                             html.Span(id="predicted-export-value"),
-                                            ". This is considered ",
-                                            html.Span(id="export-level", style={"fontWeight": "bold"}),  # HIGH / AVERAGE / LOW
-                                            "."
-                                            ]), 
-                                            html.P(id="export-recommendation-text"),
+                                            html.Div(id="export-recommendation-text", style={"marginTop":"0px"})
+                                            ])
                                             ], className="recommendation-box"),
                                     # GDI Section
                                     html.Div([
                                         html.P([
                                             html.Strong("Predicted Geopolitical Distance Index (GDI): "),
                                             html.Span(id="predicted-gdi-value"),
-                                            ". This is considered ",
-                                            html.Span(id="gdi-level", style={"fontWeight": "bold"}),  # HIGH / AVERAGE / LOW
-                                            "."
+                                            html.Div(id="gdi-recommendation-text", style={"marginTop":"0px"})
                                             ]),
-                                            html.P(id="gdi-recommendation-text")
                                             ], className="recommendation-box"),
                                     # Trade-to-GDP Section
                                     html.Div([
                                         html.P([
                                             html.Strong("Trade-to-GDP Ratio: "),
                                             html.Span(id="trade-gdp-value"),
-                                            ]),
-                                            html.P(id="trade-gdp-recommendation-text")
+                                            html.Div(id="trade-gdp-recommendation-text")
+                                            ])
                                             ], className="recommendation-box"),
                                     # AHS Tariff Section
                                     html.Div([
                                         html.P([
-                                            html.Strong("Average Tariff Rate: "),
+                                            html.Strong("Tariff Rate: "),
                                             html.Span(id="tariff-value"),
-                                            ]),
                                             html.P(id="tariff-recommendation-text")
+                                            ])
                                             ], className="recommendation-box")
-                                        ], style={
-                                            "padding": "2px 2px 2px 0px",
-                                            "fontSize": "13px",
-                                            "border": "1px solid #ccc",
-                                            "borderBottom": "none",
-                                            "cursor": "pointer",
-                                            "borderTopLeftRadius": "6px",
-                                            "borderTopRightRadius": "6px",
-                                            "fontWeight":"bold",
-                                            "width": "100%"
+                                        ], style={"marginLeft":"20px"
                                         })
-
-
-
-
-
-
-
                             ])
                         ],
                     )
@@ -294,7 +265,6 @@ app.layout = html.Div(id="app-container",
                     "padding": "2px 2px 2px 0px",
                     "fontSize": "13px",
                     "border": "1px solid #ccc",
-                    "borderBottom": "none",
                     "cursor": "pointer",
                     "borderTopLeftRadius": "6px",
                     "borderTopRightRadius": "6px",
@@ -522,12 +492,11 @@ thresholds = {
 }
 
 @app.callback(
+    Output("recommendation-title", "children"),
     Output("country-name-prediction", "children"),
     Output("predicted-export-value", "children"),
-    Output("export-level", "children"),
     Output("export-recommendation-text", "children"),
     Output("predicted-gdi-value", "children"),
-    Output("gdi-level", "children"),
     Output("gdi-recommendation-text", "children"),
     Output("trade-gdp-value", "children"),  
     Output("trade-gdp-recommendation-text", "children"),
@@ -537,13 +506,17 @@ thresholds = {
 )
 def update_recommendations(clickData):
     if clickData is None:
-        return ["Click a country"] * 11
+        return ("Please click a country on the map to view recommendation", 
+        "", "", "", "", "", "", "", "", "")
+
     
     selected_country = clickData["points"][0]["location"]
     country_matches = df[df["country_id_d"] == selected_country]
+    country_name = country_matches.iloc[0]["Name"]
     
     if country_matches.empty:
-        return ["No data available"] * 11
+        return ("No data available", 
+        "", "", "", "", "", "", "", "", "")
     
     try:
         # Get prediction data (assumed to always exist)
@@ -579,26 +552,26 @@ def update_recommendations(clickData):
     # Predicted export volume
     export_class = classify(row["exp_export_2021"], "export")
     export_text = {
-        "HIGH": "(>75th percentile) Consider increasing export commitments and exploring long-term trade contracts.",
-        "AVERAGE": "(25th–75th percentile) Maintain current export strategy but keep a lookout for new markets.",
-        "LOW": "(<25th percentile) Monitor market before making decisions, and consider reducing export volume or exploring new destinations."
+        "HIGH": "This value is >75th percentile and considerd HIGH. A high export volume suggests strong and sustained demand, signaling solid commercial potential. It is recommended to expand export commitments and explore long-term trade contracts",
+        "Average": "This value is at 25-75th percentile and considered AVERAGE. This market is neighter a top performer not significantly underperforming. Maintain current export strategy but keep a lookout for new markets.",
+        "LOW": "This value is <25th percentile and considered LOW. Low volume may reflect poor fit, weak demand, or external barriers (e.g. regulations). Monitor market before making decisions, and consider reducing export volume or exploring new destinations."
     }.get(export_class, "No data available")
 
     # Predicted GDI
     gdi_class = classify(row["geodistance"], "gdi")
     gdi_text = {
-        "HIGH": "Geopolitically far (<25th percentile): Growing political risks, need to re-evaluate commitments and diversify target markets.",
-        "AVERAGE": "(25th–75th percentile) Maintain current level of engagement, while monitoring for political shifts or new bilateral opportunities",
-        "LOW": "Geopolitically near (>75th percentile): Improved diplomatic alignment, recommend expanding market and consider long-term presence"
+        "HIGH": "This value is >75th percentile and considered geopolitically FAR. This country is geopolitically distant from Singapore, which may expose your business to elevated political risks. It is advisable to reassess your engagement and consider diversifying exports to more geopolitically aligned markets.",
+        "AVERAGE": "This value is at 25th–75th percentile and considered AVERAGE. This market shows moderate geopolitical alignment with Singapore. Maintain current level of engagement, while monitoring for political shifts or new bilateral opportunities",
+        "LOW": "This value is <25th percentile and considered geopolitically CLOSE. This country maintains close geopolitical ties with Singapore, offering a stable and cooperative trade environment. You are encouraged to improve diplomatic alignment, expand market, and consider long-term presence"
     }.get(gdi_class, "No data available")
 
     # Trade-to-GDP ratio (might be missing)
     if has_trade_gdp:
         trade_to_gdp_class = classify(trade_gdp_value, "gdp_ratio")
-        trade_gdp_text = f"This is considered {trade_to_gdp_class}. " + {
-            "HIGH": "This country is highly trade-dependent (>75th percentile), meaning it may be more open to trade.",
-            "AVERAGE": "This country has moderate (25-75th percentile) trade dependence. Assess other indicators such as policy direction or economic trends before acting.",
-            "LOW": "Trade may not be a priority (<25th percentile) for this country, better to focus on other regions with stronger trade incentives."
+        trade_gdp_text = {
+            "HIGH": "This value is >75th percentile and considered HIGH. This country relies heavily on international trade, suggesting a favorable environment for export activites. Consider this market a strong candidate for expanding your trade footprint.",
+            "AVERAGE": "This value is at 25th-75th percentile and considered AVERAGE. This country has moderate trade dependence. Maintain your current trade strategy while monitoring for olicy direction or economic trends before acting",
+            "LOW": "This value is <25th percentile and considered LOW. Trade may not be a priority for this country, better to deprioritize this market and focus on other regions with stronger trade incentives."
             }.get(trade_to_gdp_class, "")
     else:
         trade_gdp_text = "No trade-to-GDP data available"
@@ -608,24 +581,23 @@ def update_recommendations(clickData):
     # Tariff rate (might be missing)
     if has_tariff:
         tariff_class = "Zero" if tariff_value == 0 else "Non-Zero"
-        tariff_text = f"Average Tariff Rate is {tariff_class}. " + {
-            "Non-Zero": "High tariffs may squeeze profit margins. Consider shifting to lower-tariff countries or look for FTA opportunities",
-            "Zero": "Low barriers to entry. Consider expanding export to this country."
+        tariff_text = {
+            "Non-Zero": "This country imposes NON-ZERO tariffs on imports, which may squeeze profit margins. Consider shifting to lower-tariff countries or look for FTA opportunities",
+            "Zero": "This country has NO tariffs on imports, indicating minimal barriers to entry. The favorable trade conditions present a strong opportunity to expand your exports with fewer cost concerns"
             }.get(tariff_class, "")
     else:
-        tariff_text = "No tariff data available"
+        tariff_text = ""
     tariff_display = f"{tariff_value:.5f}%" if has_tariff else "No data available"
 
 
     country_name = country_matches.iloc[0]["Name"]
     
     return (
+        f"Export Strategy Recommendation for {country_name}",
         country_name,
         f"{row['exp_export_2021']:,.0f} USD",
-        export_class,
         export_text,
         f"{row['geodistance']:,.0f}",
-        gdi_class,
         gdi_text,
         trade_gdp_display,
         trade_gdp_text,
