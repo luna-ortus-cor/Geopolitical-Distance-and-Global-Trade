@@ -8,6 +8,7 @@ exports_df = pd.read_csv("Frontend/Data/combined_trade_volume.csv")
 trade_to_gdp = pd.read_csv("Backend/data/trade_to_gdp_ratio_clean.csv")
 trade_to_gdp = trade_to_gdp[(trade_to_gdp["Year"] >= 1989) & (trade_to_gdp["Year"] <= 2022)]
 ahs_df = pd.read_csv("Frontend/Data/updated_ahs_cleaned.csv")
+predictions_df = pd.read_csv("Backend/data/recommendations.csv").assign(country_id_d=lambda x: x['country_id_d'].astype(str).str[:3])
 
 # Only take years from 1989 to 2020
 df = df[(df["Year"] >= 1989) & (df["Year"] <= 2020)]
@@ -225,7 +226,68 @@ app.layout = html.Div(id="app-container",
                                     ]),
                                 ]),
                             #recommendation tab
-                            dcc.Tab(label="Recommendations", value="recommendations", children=[])
+                            dcc.Tab(label="Recommendations", value="recommendations", children=[
+                                html.H5("Export Strategy Recommendations", className="section-title"),
+                                html.Div([
+                                    # Export Volume Section
+                                    html.Div([
+                                        html.P([
+                                            html.Strong("Predicted Export Volume of "),
+                                            html.Span(id="country-name-prediction"),
+                                            ": ",
+                                            html.Span(id="predicted-export-value"),
+                                            ". This is considered ",
+                                            html.Span(id="export-level", style={"fontWeight": "bold"}),  # HIGH / AVERAGE / LOW
+                                            "."
+                                            ]), 
+                                            html.P(id="export-recommendation-text"),
+                                            ], className="recommendation-box"),
+                                    # GDI Section
+                                    html.Div([
+                                        html.P([
+                                            html.Strong("Predicted Geopolitical Distance Index (GDI): "),
+                                            html.Span(id="predicted-gdi-value"),
+                                            ". This is considered ",
+                                            html.Span(id="gdi-level", style={"fontWeight": "bold"}),  # HIGH / AVERAGE / LOW
+                                            "."
+                                            ]),
+                                            html.P(id="gdi-recommendation-text")
+                                            ], className="recommendation-box"),
+                                    # Trade-to-GDP Section
+                                    html.Div([
+                                        html.P([
+                                            html.Strong("Trade-to-GDP Ratio: "),
+                                            html.Span(id="trade-gdp-value"),
+                                            ]),
+                                            html.P(id="trade-gdp-recommendation-text")
+                                            ], className="recommendation-box"),
+                                    # AHS Tariff Section
+                                    html.Div([
+                                        html.P([
+                                            html.Strong("Average Tariff Rate: "),
+                                            html.Span(id="tariff-value"),
+                                            ]),
+                                            html.P(id="tariff-recommendation-text")
+                                            ], className="recommendation-box")
+                                        ], style={
+                                            "padding": "2px 2px 2px 0px",
+                                            "fontSize": "13px",
+                                            "border": "1px solid #ccc",
+                                            "borderBottom": "none",
+                                            "cursor": "pointer",
+                                            "borderTopLeftRadius": "6px",
+                                            "borderTopRightRadius": "6px",
+                                            "fontWeight":"bold",
+                                            "width": "100%"
+                                        })
+
+
+
+
+
+
+
+                            ])
                         ],
                     )
                 ], style={
@@ -435,6 +497,141 @@ def update_line_chart(clickData, selected_group):
     return fig, gdp_chart, ahs_fig
 
 
+
+# Thresholds for Recommendations
+# Filter to only include 2021
+trade_to_gdp_2021 = trade_to_gdp[trade_to_gdp["Year"] == 2021]
+ahs_df_2021 = ahs_df[ahs_df["Year"] == 2021]
+ahs_df_2021 = ahs_df_2021[ahs_df_2021["AHS Weighted Average (%)"] != "No Data"] #exclude "No Data" values
+thresholds = {
+    "export": {
+        "low": predictions_df["exp_export_2021"].quantile(0.25),
+        "high": predictions_df["exp_export_2021"].quantile(0.75)
+    },
+    "gdp_ratio": {
+        "low": trade_to_gdp_2021["Value"].quantile(0.25),
+        "high": trade_to_gdp_2021["Value"].quantile(0.75)
+    },
+    "tariff": {
+        "zero": 0,
+    },
+    "gdi": {
+        "low": predictions_df["geodistance"].quantile(0.25),
+        "high": predictions_df["geodistance"].quantile(0.75)
+    }
+}
+
+@app.callback(
+    Output("country-name-prediction", "children"),
+    Output("predicted-export-value", "children"),
+    Output("export-level", "children"),
+    Output("export-recommendation-text", "children"),
+    Output("predicted-gdi-value", "children"),
+    Output("gdi-level", "children"),
+    Output("gdi-recommendation-text", "children"),
+    Output("trade-gdp-value", "children"),  
+    Output("trade-gdp-recommendation-text", "children"),
+    Output("tariff-value", "children"),  
+    Output("tariff-recommendation-text", "children"), 
+    Input("choropleth-map", "clickData")
+)
+def update_recommendations(clickData):
+    if clickData is None:
+        return ["Click a country"] * 11
+    
+    selected_country = clickData["points"][0]["location"]
+    country_matches = df[df["country_id_d"] == selected_country]
+    
+    if country_matches.empty:
+        return ["No data available"] * 11
+    
+    try:
+        # Get prediction data (assumed to always exist)
+        row = predictions_df[predictions_df["country_id_d"] == country_matches["country_id_d"].values[0]].iloc[0]
+        
+        # Get trade-to-GDP data (might be missing)
+        trade_gdp_row = trade_to_gdp_2021[trade_to_gdp_2021["Country Code"] == selected_country]
+        has_trade_gdp = (
+            not trade_gdp_row.empty and 
+            pd.notna(trade_gdp_row["Value"].iloc[0])
+        )
+        trade_gdp_value = trade_gdp_row["Value"].values[0] if has_trade_gdp else None
+        
+        # Get tariff data (might be missing)
+        tariff_row = ahs_df_2021[ahs_df_2021["Country"] == country_matches["Name"].values[0]]
+        has_tariff = not tariff_row.empty
+        tariff_value = float(tariff_row["AHS Weighted Average (%)"].values[0]) if has_tariff else None
+        
+    except Exception as e:
+        print(f"Error getting data: {e}")
+        return ["Error loading data"] * 12
+    
+    def classify(value, metric):
+        if value is None:
+            return ""
+        if value < thresholds[metric]["low"]:
+            return "LOW"
+        elif value > thresholds[metric]["high"]:
+            return "HIGH"
+        else:
+            return "AVERAGE"
+    
+    # Predicted export volume
+    export_class = classify(row["exp_export_2021"], "export")
+    export_text = {
+        "HIGH": "(>75th percentile) Consider increasing export commitments and exploring long-term trade contracts.",
+        "AVERAGE": "(25th–75th percentile) Maintain current export strategy but keep a lookout for new markets.",
+        "LOW": "(<25th percentile) Monitor market before making decisions, and consider reducing export volume or exploring new destinations."
+    }.get(export_class, "No data available")
+
+    # Predicted GDI
+    gdi_class = classify(row["geodistance"], "gdi")
+    gdi_text = {
+        "HIGH": "Geopolitically far (<25th percentile): Growing political risks, need to re-evaluate commitments and diversify target markets.",
+        "AVERAGE": "(25th–75th percentile) Maintain current level of engagement, while monitoring for political shifts or new bilateral opportunities",
+        "LOW": "Geopolitically near (>75th percentile): Improved diplomatic alignment, recommend expanding market and consider long-term presence"
+    }.get(gdi_class, "No data available")
+
+    # Trade-to-GDP ratio (might be missing)
+    if has_trade_gdp:
+        trade_to_gdp_class = classify(trade_gdp_value, "gdp_ratio")
+        trade_gdp_text = f"This is considered {trade_to_gdp_class}. " + {
+            "HIGH": "This country is highly trade-dependent (>75th percentile), meaning it may be more open to trade.",
+            "AVERAGE": "This country has moderate (25-75th percentile) trade dependence. Assess other indicators such as policy direction or economic trends before acting.",
+            "LOW": "Trade may not be a priority (<25th percentile) for this country, better to focus on other regions with stronger trade incentives."
+            }.get(trade_to_gdp_class, "")
+    else:
+        trade_gdp_text = "No trade-to-GDP data available"
+    trade_gdp_display = f"{trade_gdp_value:,.1f}%" if has_trade_gdp else "No data available"
+
+
+    # Tariff rate (might be missing)
+    if has_tariff:
+        tariff_class = "Zero" if tariff_value == 0 else "Non-Zero"
+        tariff_text = f"Average Tariff Rate is {tariff_class}. " + {
+            "Non-Zero": "High tariffs may squeeze profit margins. Consider shifting to lower-tariff countries or look for FTA opportunities",
+            "Zero": "Low barriers to entry. Consider expanding export to this country."
+            }.get(tariff_class, "")
+    else:
+        tariff_text = "No tariff data available"
+    tariff_display = f"{tariff_value:.5f}%" if has_tariff else "No data available"
+
+
+    country_name = country_matches.iloc[0]["Name"]
+    
+    return (
+        country_name,
+        f"{row['exp_export_2021']:,.0f} USD",
+        export_class,
+        export_text,
+        f"{row['geodistance']:,.0f}",
+        gdi_class,
+        gdi_text,
+        trade_gdp_display,
+        trade_gdp_text,
+        tariff_display,
+        tariff_text
+    )
 
 # Run the app
 if __name__ == '__main__':
