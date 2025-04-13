@@ -219,7 +219,7 @@ app.layout = html.Div(id="app-container",
                                     ]),
                                 ]),
                             #recommendation tab
-                            dcc.Tab(label="Recommendations", value="recommendations", children=[
+                            dcc.Tab(label="Recommendations", value="Recommendations", children=[
                                 html.H5("Export Strategy Recommendations", id="recommendation-title", style={"textAlign":"center", "margin-top":"15px", "fontWeight":"bold"}),
                                 html.Div([
                                     # Export Volume Section
@@ -357,42 +357,6 @@ def update_product_group_dropdown(clickData):
     return options, "All Products" if "All Products" in product_groups else product_groups[0]
 
 
-#click on the map to go to details tab, update details tab's title and chart
-#click to switch to recommendation tab
-@app.callback(
-    [Output("tabs", "value"),
-     Output("details-title", "children")],
-    [Input("choropleth-map", "clickData"),
-     Input("go-to-recommend", "n_clicks")],
-    prevent_initial_call=True
-)
-
-def go_to_details(clickData, n_clicks):
-    ctx = callback_context
-    if not ctx.triggered:
-        raise exceptions.PreventUpdate
-    
-    trigger_id = ctx.triggered[0]["prop_id"].split(".")[0]
-    
-    # Initialize default title
-    title="Please Click a Country on the Map to View Details"
-
-    # Handle choropleth-map click
-    if trigger_id == "choropleth-map" and clickData is not None:
-        clicked_country = clickData["points"][0]["location"]
-        country_data = df[df["country_id_d"] == clicked_country]
-        
-        if not country_data.empty:
-            country_name = country_data.iloc[0]["Name"]
-            title = f"In-Depth Trade Trends & Analysis for {country_name}"
-        else:
-            title = "No data available for selected country."
-
-    # Handle button click to go to recommendations
-    elif trigger_id == "go-to-recommend" and n_clicks is not None:
-        return "Recommendations", title
-
-    return "details", title
     
 @app.callback(
     Output("line-chart", "figure"),
@@ -482,9 +446,6 @@ thresholds = {
         "low": trade_to_gdp_2021["Value"].quantile(0.25),
         "high": trade_to_gdp_2021["Value"].quantile(0.75)
     },
-    "tariff": {
-        "zero": 0,
-    },
     "gdi": {
         "low": predictions_df["geodistance"].quantile(0.25),
         "high": predictions_df["geodistance"].quantile(0.75)
@@ -492,118 +453,143 @@ thresholds = {
 }
 
 @app.callback(
-    Output("recommendation-title", "children"),
-    Output("country-name-prediction", "children"),
-    Output("predicted-export-value", "children"),
-    Output("export-recommendation-text", "children"),
-    Output("predicted-gdi-value", "children"),
-    Output("gdi-recommendation-text", "children"),
-    Output("trade-gdp-value", "children"),  
-    Output("trade-gdp-recommendation-text", "children"),
-    Output("tariff-value", "children"),  
-    Output("tariff-recommendation-text", "children"), 
-    Input("choropleth-map", "clickData")
+    [
+        Output("tabs", "value"),
+        Output("details-title", "children"),
+        Output("recommendation-title", "children"),
+        Output("country-name-prediction", "children"),
+        Output("predicted-export-value", "children"),
+        Output("export-recommendation-text", "children"),
+        Output("predicted-gdi-value", "children"),
+        Output("gdi-recommendation-text", "children"),
+        Output("trade-gdp-value", "children"),  
+        Output("trade-gdp-recommendation-text", "children"),
+        Output("tariff-value", "children"),  
+        Output("tariff-recommendation-text", "children")
+    ],
+    [
+        Input("choropleth-map", "clickData"),
+        Input("go-to-recommend", "n_clicks")
+    ],
+    prevent_initial_call=True
 )
-def update_recommendations(clickData):
-    if clickData is None:
-        return ("Please click a country on the map to view recommendation", 
-        "", "", "", "", "", "", "", "", "")
-
+def tabs_callback(clickData, n_clicks):
+    ctx = callback_context
+    if not ctx.triggered:
+        raise exceptions.PreventUpdate
     
-    selected_country = clickData["points"][0]["location"]
-    country_matches = df[df["country_id_d"] == selected_country]
-    country_name = country_matches.iloc[0]["Name"]
+    trigger_id = ctx.triggered[0]["prop_id"].split(".")[0]
     
-    if country_matches.empty:
-        return ("No data available", 
-        "", "", "", "", "", "", "", "", "")
+    # Initialize default values
+    tab_value = "details"
+    details_title = "Please Click a Country on the Map to View Details"
+    recommendation_outputs = ["Please click a country on the map to view recommendation", 
+                            "", "", "", "", "", "", "", "", ""]
     
-    try:
-        # Get prediction data (assumed to always exist)
-        row = predictions_df[predictions_df["country_id_d"] == country_matches["country_id_d"].values[0]].iloc[0]
+    if clickData is not None:
+        clicked_country = clickData["points"][0]["location"]
+        country_data = df[df["country_id_d"] == clicked_country]
+        country_name = country_data.iloc[0]["Name"]
+        country_id = country_data.iloc[0]["country_id_d"]
         
-        # Get trade-to-GDP data (might be missing)
-        trade_gdp_row = trade_to_gdp_2021[trade_to_gdp_2021["Country Code"] == selected_country]
-        has_trade_gdp = (
-            not trade_gdp_row.empty and 
-            pd.notna(trade_gdp_row["Value"].iloc[0])
-        )
-        trade_gdp_value = trade_gdp_row["Value"].values[0] if has_trade_gdp else None
-        
-        # Get tariff data (might be missing)
-        tariff_row = ahs_df_2021[ahs_df_2021["Country"] == country_matches["Name"].values[0]]
-        has_tariff = not tariff_row.empty
-        tariff_value = float(tariff_row["AHS Weighted Average (%)"].values[0]) if has_tariff else None
-        
-    except Exception as e:
-        print(f"Error getting data: {e}")
-        return ["Error loading data"] * 12
+        # Update details title if map was clicked
+        if trigger_id == "choropleth-map":
+            if not country_data.empty:
+                details_title = f"In-Depth Trade Trends & Analysis for {country_name}"
+            else:
+                details_title = "No data available for selected country."
+        try:
+            # Get prediction data (assumed to always exist)
+            row = predictions_df[predictions_df["country_id_d"] == country_data["country_id_d"].values[0]].iloc[0]
+                
+            # Get trade-to-GDP data (might be missing)
+            trade_gdp_row = trade_to_gdp_2021[trade_to_gdp_2021["Country Code"] == clicked_country]
+            has_trade_gdp = (
+                not trade_gdp_row.empty and 
+                pd.notna(trade_gdp_row["Value"].iloc[0])
+            )
+            trade_gdp_value = trade_gdp_row["Value"].values[0] if has_trade_gdp else None
+                
+            # Get tariff data (might be missing)
+            tariff_row = ahs_df_2021[ahs_df_2021["Country"] == country_data["Name"].values[0]]
+            has_tariff = not tariff_row.empty
+            tariff_value = float(tariff_row["AHS Weighted Average (%)"].values[0]) if has_tariff else None
+                
+            def classify(value, metric):
+                if value is None:
+                    return ""
+                if value < thresholds[metric]["low"]:
+                    return "LOW"
+                elif value > thresholds[metric]["high"]:
+                    return "HIGH"
+                else:
+                    return "AVERAGE"
+                
+            # Predicted export volume
+            export_class = classify(row["exp_export_2021"], "export")
+            export_text = {
+                "HIGH": "This value is >75th percentile and considerd HIGH. A high export volume suggests strong and sustained demand, signaling solid commercial potential. It is recommended to expand export commitments and explore long-term trade contracts",
+                "AVERAGE": "This value is at 25-75th percentile and considered AVERAGE. This market is neighter a top performer not significantly underperforming. Maintain current export strategy but keep a lookout for new markets.",
+                "LOW": "This value is <25th percentile and considered LOW. Low volume may reflect poor fit, weak demand, or external barriers (e.g. regulations). Monitor market before making decisions, and consider reducing export volume or exploring new destinations."
+            }.get(export_class, "No data available")
+
+            # Predicted GDI
+            gdi_class = classify(row["geodistance"], "gdi")
+            gdi_text = {
+                "HIGH": "This value is >75th percentile and considered geopolitically FAR. This country is geopolitically distant from Singapore, which may expose your business to elevated political risks. It is advisable to reassess your engagement and consider diversifying exports to more geopolitically aligned markets.",
+                "AVERAGE": "This value is at 25th–75th percentile and considered AVERAGE. This market shows moderate geopolitical alignment with Singapore. Maintain current level of engagement, while monitoring for political shifts or new bilateral opportunities",
+                "LOW": "This value is <25th percentile and considered geopolitically CLOSE. This country maintains close geopolitical ties with Singapore, offering a stable and cooperative trade environment. You are encouraged to improve diplomatic alignment, expand market, and consider long-term presence"
+            }.get(gdi_class, "No data available")
+
+            # Trade-to-GDP ratio (might be missing)
+            if has_trade_gdp:
+                trade_to_gdp_class = classify(trade_gdp_value, "gdp_ratio")
+                trade_gdp_text = {
+                    "HIGH": "This value is >75th percentile and considered HIGH. This country relies heavily on international trade, suggesting a favorable environment for export activites. Consider this market a strong candidate for expanding your trade footprint.",
+                    "AVERAGE": "This value is at 25th-75th percentile and considered AVERAGE. This country has moderate trade dependence. Maintain your current trade strategy while monitoring for olicy direction or economic trends before acting",
+                    "LOW": "This value is <25th percentile and considered LOW. Trade may not be a priority for this country, better to deprioritize this market and focus on other regions with stronger trade incentives."
+                    }.get(trade_to_gdp_class, "")
+            else:
+                trade_gdp_text = "No trade-to-GDP data available"
+            trade_gdp_display = f"{trade_gdp_value:,.1f}%" if has_trade_gdp else "No data available"
+
+            # Tariff rate (might be missing)
+            if has_tariff:
+                tariff_class = "Zero" if tariff_value == 0 else "Non-Zero"
+                tariff_text = {
+                    "Non-Zero": "This country imposes NON-ZERO tariffs on imports, which may squeeze profit margins. Consider shifting to lower-tariff countries or look for FTA opportunities",
+                    "Zero": "This country has NO tariffs on imports, indicating minimal barriers to entry. The favorable trade conditions present a strong opportunity to expand your exports with fewer cost concerns"
+                    }.get(tariff_class, "")
+            else:
+                tariff_text = ""
+            tariff_display = f"{tariff_value:.5f}%" if has_tariff else "No data available"
+
+            recommendation_outputs = [
+                f"Export Strategy Recommendation for {country_name}",
+                country_name,
+                f"{row['exp_export_2021']:,.0f} USD",
+                export_text,
+                f"{row['geodistance']:,.0f}",
+                gdi_text,
+                trade_gdp_display,
+                trade_gdp_text,
+                tariff_display,
+                tariff_text
+            ]
+                
+        except Exception as e:
+            print(f"Error getting data: {e}")
+            recommendation_outputs = ["Error loading data"] * 10
+
     
-    def classify(value, metric):
-        if value is None:
-            return ""
-        if value < thresholds[metric]["low"]:
-            return "LOW"
-        elif value > thresholds[metric]["high"]:
-            return "HIGH"
-        else:
-            return "AVERAGE"
+    # Handle direct tab switch
+    if trigger_id == "go-to-recommend":
+        tab_value = "Recommendations"
+    elif trigger_id == "choropleth-map":
+        tab_value = "details"
     
-    # Predicted export volume
-    export_class = classify(row["exp_export_2021"], "export")
-    export_text = {
-        "HIGH": "This value is >75th percentile and considerd HIGH. A high export volume suggests strong and sustained demand, signaling solid commercial potential. It is recommended to expand export commitments and explore long-term trade contracts",
-        "Average": "This value is at 25-75th percentile and considered AVERAGE. This market is neighter a top performer not significantly underperforming. Maintain current export strategy but keep a lookout for new markets.",
-        "LOW": "This value is <25th percentile and considered LOW. Low volume may reflect poor fit, weak demand, or external barriers (e.g. regulations). Monitor market before making decisions, and consider reducing export volume or exploring new destinations."
-    }.get(export_class, "No data available")
-
-    # Predicted GDI
-    gdi_class = classify(row["geodistance"], "gdi")
-    gdi_text = {
-        "HIGH": "This value is >75th percentile and considered geopolitically FAR. This country is geopolitically distant from Singapore, which may expose your business to elevated political risks. It is advisable to reassess your engagement and consider diversifying exports to more geopolitically aligned markets.",
-        "AVERAGE": "This value is at 25th–75th percentile and considered AVERAGE. This market shows moderate geopolitical alignment with Singapore. Maintain current level of engagement, while monitoring for political shifts or new bilateral opportunities",
-        "LOW": "This value is <25th percentile and considered geopolitically CLOSE. This country maintains close geopolitical ties with Singapore, offering a stable and cooperative trade environment. You are encouraged to improve diplomatic alignment, expand market, and consider long-term presence"
-    }.get(gdi_class, "No data available")
-
-    # Trade-to-GDP ratio (might be missing)
-    if has_trade_gdp:
-        trade_to_gdp_class = classify(trade_gdp_value, "gdp_ratio")
-        trade_gdp_text = {
-            "HIGH": "This value is >75th percentile and considered HIGH. This country relies heavily on international trade, suggesting a favorable environment for export activites. Consider this market a strong candidate for expanding your trade footprint.",
-            "AVERAGE": "This value is at 25th-75th percentile and considered AVERAGE. This country has moderate trade dependence. Maintain your current trade strategy while monitoring for olicy direction or economic trends before acting",
-            "LOW": "This value is <25th percentile and considered LOW. Trade may not be a priority for this country, better to deprioritize this market and focus on other regions with stronger trade incentives."
-            }.get(trade_to_gdp_class, "")
-    else:
-        trade_gdp_text = "No trade-to-GDP data available"
-    trade_gdp_display = f"{trade_gdp_value:,.1f}%" if has_trade_gdp else "No data available"
-
-
-    # Tariff rate (might be missing)
-    if has_tariff:
-        tariff_class = "Zero" if tariff_value == 0 else "Non-Zero"
-        tariff_text = {
-            "Non-Zero": "This country imposes NON-ZERO tariffs on imports, which may squeeze profit margins. Consider shifting to lower-tariff countries or look for FTA opportunities",
-            "Zero": "This country has NO tariffs on imports, indicating minimal barriers to entry. The favorable trade conditions present a strong opportunity to expand your exports with fewer cost concerns"
-            }.get(tariff_class, "")
-    else:
-        tariff_text = ""
-    tariff_display = f"{tariff_value:.5f}%" if has_tariff else "No data available"
-
-
-    country_name = country_matches.iloc[0]["Name"]
     
-    return (
-        f"Export Strategy Recommendation for {country_name}",
-        country_name,
-        f"{row['exp_export_2021']:,.0f} USD",
-        export_text,
-        f"{row['geodistance']:,.0f}",
-        gdi_text,
-        trade_gdp_display,
-        trade_gdp_text,
-        tariff_display,
-        tariff_text
-    )
+    return [tab_value, details_title] + recommendation_outputs
 
 # Run the app
 if __name__ == '__main__':
