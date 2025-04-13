@@ -15,7 +15,7 @@ predictions_df = pd.read_csv("Backend/data/recommendations.csv").assign(country_
 df = df[(df["Year"] >= 1989) & (df["Year"] <= 2020)]
 
 app = Dash(__name__)
-server = app.server
+
 
 # App layout
 app.layout = html.Div(id="app-container", 
@@ -679,4 +679,4 @@ def update_recommendations(clickData):
 
 # Run the app
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run(debug=True)
