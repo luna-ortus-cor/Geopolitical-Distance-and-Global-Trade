@@ -113,7 +113,7 @@ app.layout = html.Div(id="app-container",
                                             "CEPII Gravity Dataset",
                                             href="https://www.cepii.fr/CEPII/en/bdd_modele/bdd_modele_item.asp?id=8",
                                             target="_blank",
-                                            style={"color": "#1f77b4", "textDecoration": "underline"}
+                                            style={"color": "#1f77b4", "textDecoration": "underline", "marginRight": "2px"}
                                         ),
                                         " – Offers trade friction metrics such as distance, shared language, colonial ties."
                                     ]),
