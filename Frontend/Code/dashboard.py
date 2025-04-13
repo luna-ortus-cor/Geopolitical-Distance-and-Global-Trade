@@ -24,7 +24,7 @@ app.layout = html.Div(id="app-container",
         #row container for left and right columns
         html.Div(className="row", children=[
             #left column
-            html.Div(id="left-column", className="three columns", 
+            html.Div(id="left-column", className="three columns", style={"paddingRight": "5px"},
                 children=[
                     html.Div(id="left-section-1", children=[
                         html.Div(id="instruction-card", children=[
@@ -42,14 +42,14 @@ app.layout = html.Div(id="app-container",
                                             html.P( ["We have introduced a new ",
                                                 html.Span("geopolitical Distance Index (GDI)", style={"fontWeight": "bold", "color":"#235284"}),
                                                             ", combining key factors like free trade agreements, arms trade relations, language/cultural commonalities, political alignment, and democracy levels to gauge each country's geopolitical proximity to Singapore. Lower values indicate closer ties, while higher values signal greater distance.",
-                                                ], style={"marginBottom": "0px"}
+                                                ], style={"marginBottom": "5px"}
                                             ),
-                                            html.H6(html.Span("Navigate the World Map"), style={"fontWeight": "bold", "marginBottom": "0"}),
+                                            html.P(html.Span("Navigate the World Map"), style={"fontWeight": "bold", "marginBottom": "0"}),
                                             html.Ul(children=[
                                                 html.Li(html.Span("Use the slider to see how GDI changes over time."), style={"marginBottom": "0"}),
-                                                html.Li("Click on any country for deeper insights.")
+                                                html.Li("Click on any country for deeper insights."),
+                                                html.P(html.Span("Filter by Region or Country"), style={"fontWeight": "bold", "marginBottom": "0", "marginTop":"0px"}),
                                             ], style={"marginBottom": "0px"}),
-                                            html.H6(html.Span("Filter by Region or Country"), style={"fontWeight": "bold", "marginBottom": "0"}),
                                             # Region and Country dropdowns
                                             html.Div(
                                                 id="dropdown",
@@ -113,7 +113,7 @@ app.layout = html.Div(id="app-container",
                                             "CEPII Gravity Dataset",
                                             href="https://www.cepii.fr/CEPII/en/bdd_modele/bdd_modele_item.asp?id=8",
                                             target="_blank",
-                                            style={"color": "#1f77b4", "textDecoration": "underline", "marginRight": "2px"}
+                                            style={"color": "#1f77b4", "textDecoration": "underline", "marginRight": "1px"}
                                         ),
                                         " – Offers trade friction metrics such as distance, shared language, colonial ties."
                                     ]),
@@ -151,9 +151,9 @@ app.layout = html.Div(id="app-container",
                 ]
             ),
             #right column
-            html.Div(id="right-column", className="nine columns",
+            html.Div(id="right-column", className="nine columns", style={"paddingLeft": "5px", "marginTop": "8px", "paddingTop": "0px"},
                 children=[
-                    dcc.Tabs(id="tabs", value="heatmap", persistence=True, 
+                    dcc.Tabs(id="tabs", value="heatmap", persistence=True, style={"marginTop": "0px"},
                         children=[
                             #Heatmap Tab
                             dcc.Tab(label="HeatMap", value="heatmap", 
@@ -171,7 +171,7 @@ app.layout = html.Div(id="app-container",
                                 children=[
                                     html.Div(children=[
                                         #title of detail tab
-                                        html.H5(id="details-title", children="Please Click a Country on the Map to View Details", style={"textAlign":"center", "margin-top":"30px", "fontWeight":"bold"}),
+                                        html.H5(id="details-title", children="Please Click a Country on the Map to View Details", style={"textAlign":"center", "margin-top":"15px", "fontWeight":"bold"}),
                                         #Dropdown to select Product Groups
                                         html.Div(children=[
                                             dcc.Dropdown(

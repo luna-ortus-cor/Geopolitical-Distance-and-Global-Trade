@@ -21,11 +21,11 @@
     align-items: stretch;
     height: 100%; /* ensure row takes full height */
     margin: 0;
-    padding: 0;
+    padding: 0; 
 }
 
 .three.columns {
-    margin-right: 12px;  
+    margin-right: 5px;  
     padding: 0;
 }
 
@@ -126,6 +126,16 @@ html, body, #app-container {
     overflow-y: auto;
 }
 
+/* Make active tab darker */
+.tab--selected {
+    background-color: #efefef !important;  /* dark grey background */
+    border: 1px solid #ccc;
+    padding: 12px 20px;
+    margin-right: 4px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
 
 
 
