@@ -1,3 +1,4 @@
+import dash
 from dash import Dash, dcc, html, Output, Input, exceptions, callback_context
 import plotly.express as px
 import pandas as pd
@@ -219,62 +220,131 @@ app.layout = html.Div(id="app-container",
                                     ]),
                                 ]),
                             #recommendation tab
-                            dcc.Tab(label="Recommendations", value="recommendations", children=[
-                                html.H5("Export Strategy Recommendations", id="recommendation-title", style={"textAlign":"center", "margin-top":"15px", "fontWeight":"bold"}),
-                                html.Div([
-                                    # Export Volume Section
-                                    html.Div([
-                                        html.P([
-                                            html.Strong("Predicted Export Volume of "),
-                                            html.Span(id="country-name-prediction"),
-                                            ": ",
-                                            html.Span(id="predicted-export-value"),
-                                            html.Div(id="export-recommendation-text", style={"marginTop":"0px"})
-                                            ])
-                                            ], className="recommendation-box"),
-                                    # GDI Section
-                                    html.Div([
-                                        html.P([
-                                            html.Strong("Predicted Geopolitical Distance Index (GDI): "),
-                                            html.Span(id="predicted-gdi-value"),
-                                            html.Div(id="gdi-recommendation-text", style={"marginTop":"0px"})
-                                            ]),
-                                            ], className="recommendation-box"),
-                                    # Trade-to-GDP Section
-                                    html.Div([
-                                        html.P([
-                                            html.Strong("Trade-to-GDP Ratio: "),
-                                            html.Span(id="trade-gdp-value"),
-                                            html.Div(id="trade-gdp-recommendation-text")
-                                            ])
-                                            ], className="recommendation-box"),
-                                    # AHS Tariff Section
-                                    html.Div([
-                                        html.P([
-                                            html.Strong("Tariff Rate: "),
-                                            html.Span(id="tariff-value"),
-                                            html.P(id="tariff-recommendation-text")
-                                            ])
-                                            ], className="recommendation-box")
-                                        ], style={"marginLeft":"20px"
-                                        })
-                            ])
-                        ],
-                    )
-                ], style={
-                    "padding": "2px 2px 2px 0px",
-                    "fontSize": "13px",
-                    "border": "1px solid #ccc",
-                    "cursor": "pointer",
-                    "borderTopLeftRadius": "6px",
-                    "borderTopRightRadius": "6px",
-                    "fontWeight":"bold",
-                    "width": "100%"
-                })
-            ]
-        )
+                            dcc.Tab(
+                                label="Recommendations",
+                                value="recommendations",
+                                children=[
+                                    html.H5(
+                                        id="recommendation-title",
+                                        children="Export Strategy Recommendations",
+                                        style={
+                                            "textAlign": "center",
+                                            "marginTop": "15px",
+                                            "fontWeight": "bold",
+                                            "marginBottom": "40px"
+                                        }
+                                    ),
+
+                                    html.Div(
+                                        children=[
+                                            # 1. Export Volume Card
+                                            html.Div(
+                                                className="recommendation-box",
+                                                children=[
+                                                    # Top row: Title + Classification Badge
+                                                    html.Div(
+                                                        className="recommendation-box-title",
+                                                        children=[
+                                                            html.Span([
+                                                                html.Strong("Predicted Export Volume of "),
+                                                                html.Span(id="country-name-prediction"),
+                                                                ": ",
+                                                                html.Span(id="predicted-export-value",
+                                                                          className="section-value")
+                                                            ]),
+                                                            html.Span(id="export-classification-badge",
+                                                                      className="badge")
+                                                        ]
+                                                    ),
+                                                    # Description text
+                                                    html.Div(
+                                                        id="export-recommendation-text",
+                                                        style={"fontSize": "14px", "marginBottom": "20px"}
+                                                    )
+                                                ]
+                                            ),
+                                            # 2. GDI Card
+                                            html.Div(
+                                                className="recommendation-box",
+                                                children=[
+                                                    html.Div(
+                                                        className="recommendation-box-title",
+                                                        children=[
+                                                            html.Span([
+                                                                html.Strong(
+                                                                    "Predicted Geopolitical Distance Index (GDI): "),
+                                                                html.Span(id="predicted-gdi-value",
+                                                                          className="section-value")
+                                                            ]),
+                                                            html.Span(id="gdi-classification-badge", className="badge")
+                                                        ]
+                                                    ),
+                                                    html.Div(
+                                                        id="gdi-recommendation-text",
+                                                        style={"fontSize": "14px", "marginBottom": "20px"}
+                                                    )
+                                                ]
+                                            ),
+                                            # 3. Trade-to-GDP Card
+                                            html.Div(
+                                                className="recommendation-box",
+                                                children=[
+                                                    html.Div(
+                                                        className="recommendation-box-title",
+                                                        children=[
+                                                            html.Span([
+                                                                html.Strong("Trade-to-GDP Ratio: "),
+                                                                html.Span(id="trade-gdp-value",
+                                                                          className="section-value")
+                                                            ]),
+                                                            html.Span(id="trade-gdp-classification-badge",
+                                                                      className="badge")
+                                                        ]
+                                                    ),
+                                                    html.Div(
+                                                        id="trade-gdp-recommendation-text",
+                                                        style={"fontSize": "14px", "marginBottom": "20px"}
+                                                    )
+                                                ]
+                                            ),
+                                            # 4. AHS Tariff Card
+                                            html.Div(
+                                                className="recommendation-box",
+                                                children=[
+                                                    html.Div(
+                                                        className="recommendation-box-title",
+                                                        children=[
+                                                            html.Span([
+                                                                html.Strong("Tariff Rate: "),
+                                                                html.Span(id="tariff-value", className="section-value")
+                                                            ]),
+                                                            html.Span(id="tariff-classification-badge",
+                                                                      className="badge")
+                                                        ]
+                                                    ),
+                                                    html.Div(
+                                                        id="tariff-recommendation-text",
+                                                        style={"fontSize": "14px"}
+                                                    )
+                                                ]
+                                            )
+                                        ],
+                                        style={
+                                            "maxWidth": "850px",
+                                            "margin": "20px auto",
+                                            "padding": "0 20px"
+                                        }
+                                    )
+                                ]
+                            )
+                        ]
+                             )
+                ]
+                     )
+        ]
+                 )
     ]
-)
+                      )
 
 # Callback to update the list of countries based on selected region
 @app.callback(
@@ -390,7 +460,7 @@ def go_to_details(clickData, n_clicks):
 
     # Handle button click to go to recommendations
     elif trigger_id == "go-to-recommend" and n_clicks is not None:
-        return "Recommendations", title
+        return "recommendations", title
 
     return "details", title
     
@@ -591,19 +661,20 @@ def update_recommendations(clickData):
 
 
     country_name = country_matches.iloc[0]["Name"]
-    
+
     return (
         f"Export Strategy Recommendation for {country_name}",
         country_name,
-        f"{row['exp_export_2021']:,.0f} USD",
+        html.Span(f"{row['exp_export_2021']:,.0f} USD", style={"fontWeight": "bold", "color": "#235284"}),
         export_text,
-        f"{row['geodistance']:,.0f}",
+        html.Span(f"{row['geodistance']:,.0f}", style={"fontWeight": "bold","color": "#235284"}),
         gdi_text,
-        trade_gdp_display,
+        html.Span(trade_gdp_display, style={"fontWeight": "bold", "color": "#235284"}),
         trade_gdp_text,
-        tariff_display,
+        html.Span(tariff_display, style={"fontWeight": "bold", "color": "#235284"}),
         tariff_text
     )
+
 
 # Run the app
 if __name__ == '__main__':
