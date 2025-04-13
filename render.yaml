@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: dash-dashboard
+    env: python
+    plan: free
+    buildCommand: pip install -r Frontend/Code/requirements.txt
+    startCommand: python Frontend/Code/dashboard.py
+    buildFilter:
+      paths:
+        - Frontend/**
+        - Backend/**
+        - render.yaml
