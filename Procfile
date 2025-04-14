@@ -1,1 +1,1 @@
-web: gunicorn Frontend.Code.dashboard:server
+web: gunicorn --bind 0.0.0.0:8080 Frontend.Code.dashboard:server
