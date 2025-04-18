@@ -20,7 +20,7 @@ Dash is running on http://0.0.0.0:8080/
 * Running on http://127.0.0.1:8080
 * Running on http://192.168.X.X:8080
 
-5. **To view the dashboard:**
+4. **To view the dashboard:**
    - Use `http://127.0.0.1:8080` if you're on the **same computer** (localhost).
    - Use `http://192.168.X.X:8080` if you want to access the dashboard from **another device on the same Wi-Fi** (e.g., phone, tablet, or another computer).
      - The `192.168.X.X` is the **local IP address** of the computer running the Dash app. It will automatically show up in your terminal after you run the app.
