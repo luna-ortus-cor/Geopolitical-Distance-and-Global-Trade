@@ -130,7 +130,7 @@ app.layout = html.Div(id="app-container",
                                     html.Li([
                                         html.A(
                                             "UNGA Voting Records",
-                                            href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/LEJUQZ/",
+                                            href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/LEJUQZ",
                                             target="_blank",
                                             style={"color": "#1f77b4", "textDecoration": "underline"}
                                         ),
