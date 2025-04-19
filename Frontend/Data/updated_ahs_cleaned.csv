@@ -15,7 +15,7 @@ Aruba,1989,No Data
 Australia,1989,1.74942270134145
 Austria,1989,0.0848204015531361
 Azerbaijan,1989,No Data
-Bahamas,1989,2.7530210005588
+"Bahamas, The",1989,2.7530210005588
 Bahrain,1989,12.7381202832229
 Bangladesh,1989,8.47265549880487
 Barbados,1989,No Data
@@ -230,7 +230,7 @@ Uganda,1989,0.0
 Ukraine,1989,No Data
 United Arab Emirates,1989,1.78393152402176
 United Kingdom,1989,16.5521590431238
-United States Of America,1989,3.96599424784965
+United States,1989,3.96599424784965
 United States Minor Outlying I,1989,No Data
 Unspecified,1989,10.8283514458322
 Uruguay,1989,0.0
@@ -262,7 +262,7 @@ Aruba,1990,No Data
 Australia,1990,No Data
 Austria,1990,No Data
 Azerbaijan,1990,No Data
-Bahamas,1990,No Data
+"Bahamas, The",1990,No Data
 Bahrain,1990,No Data
 Bangladesh,1990,No Data
 Barbados,1990,No Data
@@ -477,7 +477,7 @@ Uganda,1990,No Data
 Ukraine,1990,No Data
 United Arab Emirates,1990,No Data
 United Kingdom,1990,No Data
-United States Of America,1990,No Data
+United States,1990,No Data
 United States Minor Outlying I,1990,No Data
 Unspecified,1990,No Data
 Uruguay,1990,No Data
@@ -509,7 +509,7 @@ Aruba,1991,No Data
 Australia,1991,No Data
 Austria,1991,No Data
 Azerbaijan,1991,No Data
-Bahamas,1991,No Data
+"Bahamas, The",1991,No Data
 Bahrain,1991,No Data
 Bangladesh,1991,No Data
 Barbados,1991,No Data
@@ -724,7 +724,7 @@ Uganda,1991,No Data
 Ukraine,1991,No Data
 United Arab Emirates,1991,No Data
 United Kingdom,1991,No Data
-United States Of America,1991,No Data
+United States,1991,No Data
 United States Minor Outlying I,1991,No Data
 Unspecified,1991,No Data
 Uruguay,1991,No Data
@@ -756,7 +756,7 @@ Aruba,1992,No Data
 Australia,1992,No Data
 Austria,1992,No Data
 Azerbaijan,1992,No Data
-Bahamas,1992,No Data
+"Bahamas, The",1992,No Data
 Bahrain,1992,No Data
 Bangladesh,1992,No Data
 Barbados,1992,No Data
@@ -971,7 +971,7 @@ Uganda,1992,No Data
 Ukraine,1992,No Data
 United Arab Emirates,1992,No Data
 United Kingdom,1992,No Data
-United States Of America,1992,No Data
+United States,1992,No Data
 United States Minor Outlying I,1992,No Data
 Unspecified,1992,No Data
 Uruguay,1992,No Data
@@ -1003,7 +1003,7 @@ Aruba,1993,No Data
 Australia,1993,No Data
 Austria,1993,No Data
 Azerbaijan,1993,No Data
-Bahamas,1993,No Data
+"Bahamas, The",1993,No Data
 Bahrain,1993,No Data
 Bangladesh,1993,No Data
 Barbados,1993,No Data
@@ -1218,7 +1218,7 @@ Uganda,1993,No Data
 Ukraine,1993,No Data
 United Arab Emirates,1993,No Data
 United Kingdom,1993,No Data
-United States Of America,1993,No Data
+United States,1993,No Data
 United States Minor Outlying I,1993,No Data
 Unspecified,1993,No Data
 Uruguay,1993,No Data
@@ -1250,7 +1250,7 @@ Aruba,1994,No Data
 Australia,1994,No Data
 Austria,1994,No Data
 Azerbaijan,1994,No Data
-Bahamas,1994,No Data
+"Bahamas, The",1994,No Data
 Bahrain,1994,No Data
 Bangladesh,1994,No Data
 Barbados,1994,No Data
@@ -1465,7 +1465,7 @@ Uganda,1994,No Data
 Ukraine,1994,No Data
 United Arab Emirates,1994,No Data
 United Kingdom,1994,No Data
-United States Of America,1994,No Data
+United States,1994,No Data
 United States Minor Outlying I,1994,No Data
 Unspecified,1994,No Data
 Uruguay,1994,No Data
@@ -1497,7 +1497,7 @@ Aruba,1995,No Data
 Australia,1995,0.45522308285063
 Austria,1995,0.0173072897412277
 Azerbaijan,1995,No Data
-Bahamas,1995,0.0
+"Bahamas, The",1995,0.0
 Bahrain,1995,0.020956041921151
 Bangladesh,1995,0.0
 Barbados,1995,No Data
@@ -1712,7 +1712,7 @@ Uganda,1995,No Data
 Ukraine,1995,0.0
 United Arab Emirates,1995,0.0
 United Kingdom,1995,0.351136314148134
-United States Of America,1995,0.0835315848233791
+United States,1995,0.0835315848233791
 United States Minor Outlying I,1995,No Data
 Unspecified,1995,0.0423776783639871
 Uruguay,1995,0.0
@@ -1744,7 +1744,7 @@ Aruba,1996,No Data
 Australia,1996,0.0652475853690352
 Austria,1996,0.0043425549928488
 Azerbaijan,1996,No Data
-Bahamas,1996,0.0
+"Bahamas, The",1996,0.0
 Bahrain,1996,0.002099776367257
 Bangladesh,1996,0.0
 Barbados,1996,No Data
@@ -1959,7 +1959,7 @@ Uganda,1996,No Data
 Ukraine,1996,0.0
 United Arab Emirates,1996,0.0039393090392453
 United Kingdom,1996,0.0791286889826547
-United States Of America,1996,0.0056318687037076
+United States,1996,0.0056318687037076
 United States Minor Outlying I,1996,No Data
 Unspecified,1996,0.0011712339809293
 Uruguay,1996,0.0
@@ -1991,7 +1991,7 @@ Aruba,1997,No Data
 Australia,1997,0.0656837878425006
 Austria,1997,0.0044854966850597
 Azerbaijan,1997,No Data
-Bahamas,1997,0.0
+"Bahamas, The",1997,0.0
 Bahrain,1997,0.0020990680039862
 Bangladesh,1997,0.0
 Barbados,1997,No Data
@@ -2206,7 +2206,7 @@ Uganda,1997,No Data
 Ukraine,1997,0.0
 United Arab Emirates,1997,0.0039224159582438
 United Kingdom,1997,0.079327429063593
-United States Of America,1997,0.0056404562451984
+United States,1997,0.0056404562451984
 United States Minor Outlying I,1997,No Data
 Unspecified,1997,0.0011848586849595
 Uruguay,1997,0.0
@@ -2238,7 +2238,7 @@ Aruba,1998,No Data
 Australia,1998,0.066868676719338
 Austria,1998,0.0770617708035088
 Azerbaijan,1998,No Data
-Bahamas,1998,0.0
+"Bahamas, The",1998,0.0
 Bahrain,1998,0.0018648368841794
 Bangladesh,1998,0.0
 Barbados,1998,No Data
@@ -2453,7 +2453,7 @@ Uganda,1998,No Data
 Ukraine,1998,0.0
 United Arab Emirates,1998,0.0
 United Kingdom,1998,0.0296892861308717
-United States Of America,1998,0.0038775762540521
+United States,1998,0.0038775762540521
 United States Minor Outlying I,1998,No Data
 Unspecified,1998,0.00099164970182
 Uruguay,1998,0.0
@@ -2485,7 +2485,7 @@ Aruba,1999,0.0
 Australia,1999,0.068798047043319
 Austria,1999,0.0429326807704306
 Azerbaijan,1999,0.0
-Bahamas,1999,0.0
+"Bahamas, The",1999,0.0
 Bahrain,1999,0.0017759354100143
 Bangladesh,1999,0.0
 Barbados,1999,0.0
@@ -2700,7 +2700,7 @@ Uganda,1999,0.0
 Ukraine,1999,0.0
 United Arab Emirates,1999,0.0
 United Kingdom,1999,0.0194902384816671
-United States Of America,1999,0.0040420577406659
+United States,1999,0.0040420577406659
 United States Minor Outlying I,1999,No Data
 Unspecified,1999,0.0514782268914405
 Uruguay,1999,0.0
@@ -2732,7 +2732,7 @@ Aruba,2000,0.0
 Australia,2000,0.0358647535767472
 Austria,2000,0.0629104126852826
 Azerbaijan,2000,0.0
-Bahamas,2000,0.0
+"Bahamas, The",2000,0.0
 Bahrain,2000,0.001521377197245
 Bangladesh,2000,0.0606234666777145
 Barbados,2000,0.0
@@ -2947,7 +2947,7 @@ Uganda,2000,0.0
 Ukraine,2000,0.0
 United Arab Emirates,2000,3.013766494e-07
 United Kingdom,2000,0.0230060907280545
-United States Of America,2000,0.0039120451698923
+United States,2000,0.0039120451698923
 United States Minor Outlying I,2000,0.0
 Unspecified,2000,No Data
 Uruguay,2000,0.0
@@ -2979,7 +2979,7 @@ Aruba,2001,No Data
 Australia,2001,0.0254312104100394
 Austria,2001,0.0020777489075635
 Azerbaijan,2001,0.0
-Bahamas,2001,0.633397549610108
+"Bahamas, The",2001,0.633397549610108
 Bahrain,2001,0.0012022024650957
 Bangladesh,2001,0.0
 Barbados,2001,0.0
@@ -3194,7 +3194,7 @@ Uganda,2001,0.0
 Ukraine,2001,0.0
 United Arab Emirates,2001,0.0
 United Kingdom,2001,0.0267769241493644
-United States Of America,2001,0.0033525117388203
+United States,2001,0.0033525117388203
 United States Minor Outlying I,2001,No Data
 Unspecified,2001,No Data
 Uruguay,2001,0.0
@@ -3226,7 +3226,7 @@ Aruba,2002,0.0
 Australia,2002,0.0284059719027082
 Austria,2002,0.0030968337146298
 Azerbaijan,2002,0.0
-Bahamas,2002,0.0007227486356065
+"Bahamas, The",2002,0.0007227486356065
 Bahrain,2002,0.0016350291015886
 Bangladesh,2002,0.0
 Barbados,2002,0.0
@@ -3441,7 +3441,7 @@ Uganda,2002,0.0
 Ukraine,2002,0.0
 United Arab Emirates,2002,1.1814427722e-06
 United Kingdom,2002,0.038831690553853
-United States Of America,2002,0.0035653044719396
+United States,2002,0.0035653044719396
 United States Minor Outlying I,2002,0.0
 Unspecified,2002,No Data
 Uruguay,2002,0.0
@@ -3473,7 +3473,7 @@ Aruba,2003,No Data
 Australia,2003,0.0432988165848035
 Austria,2003,0.0011516846194406
 Azerbaijan,2003,No Data
-Bahamas,2003,0.0181972113223392
+"Bahamas, The",2003,0.0181972113223392
 Bahrain,2003,0.0004934010198118
 Bangladesh,2003,0.0
 Barbados,2003,No Data
@@ -3688,7 +3688,7 @@ Uganda,2003,No Data
 Ukraine,2003,0.0
 United Arab Emirates,2003,0.0006617064233867
 United Kingdom,2003,0.0321724558319704
-United States Of America,2003,0.0023555349084834
+United States,2003,0.0023555349084834
 United States Minor Outlying I,2003,No Data
 Unspecified,2003,0.0
 Uruguay,2003,0.0
@@ -3720,7 +3720,7 @@ Aruba,2004,No Data
 Australia,2004,0.0
 Austria,2004,0.0
 Azerbaijan,2004,No Data
-Bahamas,2004,0.0
+"Bahamas, The",2004,0.0
 Bahrain,2004,0.0
 Bangladesh,2004,0.0
 Barbados,2004,No Data
@@ -3935,7 +3935,7 @@ Uganda,2004,No Data
 Ukraine,2004,0.0
 United Arab Emirates,2004,0.0
 United Kingdom,2004,0.0
-United States Of America,2004,0.0
+United States,2004,0.0
 United States Minor Outlying I,2004,No Data
 Unspecified,2004,0.0
 Uruguay,2004,0.0
@@ -3967,7 +3967,7 @@ Aruba,2005,No Data
 Australia,2005,0.0
 Austria,2005,0.0031443482799298
 Azerbaijan,2005,No Data
-Bahamas,2005,0.0066332388455664
+"Bahamas, The",2005,0.0066332388455664
 Bahrain,2005,0.0
 Bangladesh,2005,0.0
 Barbados,2005,No Data
@@ -4182,7 +4182,7 @@ Uganda,2005,No Data
 Ukraine,2005,0.0
 United Arab Emirates,2005,1.94254687333e-05
 United Kingdom,2005,0.0171590442263082
-United States Of America,2005,0.0
+United States,2005,0.0
 United States Minor Outlying I,2005,No Data
 Unspecified,2005,3.79993959149e-05
 Uruguay,2005,0.0
@@ -4214,7 +4214,7 @@ Aruba,2006,No Data
 Australia,2006,0.0311377198552873
 Austria,2006,0.0041494470126198
 Azerbaijan,2006,No Data
-Bahamas,2006,0.0267501866732715
+"Bahamas, The",2006,0.0267501866732715
 Bahrain,2006,0.0
 Bangladesh,2006,0.0
 Barbados,2006,No Data
@@ -4429,7 +4429,7 @@ Uganda,2006,No Data
 Ukraine,2006,5.3060071572e-06
 United Arab Emirates,2006,0.0
 United Kingdom,2006,0.0140674190700776
-United States Of America,2006,0.0029335786733798
+United States,2006,0.0029335786733798
 United States Minor Outlying I,2006,No Data
 Unspecified,2006,2.68408860766e-05
 Uruguay,2006,0.0
@@ -4461,7 +4461,7 @@ Aruba,2007,No Data
 Australia,2007,0.0
 Austria,2007,0.0025774371480154
 Azerbaijan,2007,No Data
-Bahamas,2007,0.000998958924505
+"Bahamas, The",2007,0.000998958924505
 Bahrain,2007,0.0
 Bangladesh,2007,0.0198993328150385
 Barbados,2007,No Data
@@ -4676,7 +4676,7 @@ Uganda,2007,No Data
 Ukraine,2007,0.0
 United Arab Emirates,2007,3.43840587881e-05
 United Kingdom,2007,0.0160052768039089
-United States Of America,2007,0.0
+United States,2007,0.0
 United States Minor Outlying I,2007,No Data
 Unspecified,2007,0.0001318640732763
 Uruguay,2007,0.0
@@ -4708,7 +4708,7 @@ Aruba,2008,No Data
 Australia,2008,0.0
 Austria,2008,0.0143296464959258
 Azerbaijan,2008,No Data
-Bahamas,2008,0.0003234223785684
+"Bahamas, The",2008,0.0003234223785684
 Bahrain,2008,0.0
 Bangladesh,2008,0.0056228210890159
 Barbados,2008,No Data
@@ -4923,7 +4923,7 @@ Uganda,2008,No Data
 Ukraine,2008,0.0
 United Arab Emirates,2008,3.3052361946e-06
 United Kingdom,2008,0.0569045919873888
-United States Of America,2008,0.0
+United States,2008,0.0
 United States Minor Outlying I,2008,No Data
 Unspecified,2008,0.0
 Uruguay,2008,0.0
@@ -4955,7 +4955,7 @@ Aruba,2009,No Data
 Australia,2009,0.0
 Austria,2009,0.0027122458940146
 Azerbaijan,2009,No Data
-Bahamas,2009,0.0001424807557413
+"Bahamas, The",2009,0.0001424807557413
 Bahrain,2009,0.0
 Bangladesh,2009,0.0
 Barbados,2009,No Data
@@ -5170,7 +5170,7 @@ Uganda,2009,No Data
 Ukraine,2009,0.0
 United Arab Emirates,2009,5.99219702035e-05
 United Kingdom,2009,0.0716350025317728
-United States Of America,2009,0.0
+United States,2009,0.0
 United States Minor Outlying I,2009,No Data
 Unspecified,2009,0.0
 Uruguay,2009,0.0
@@ -5202,7 +5202,7 @@ Aruba,2010,No Data
 Australia,2010,0.0
 Austria,2010,0.0034610170075091
 Azerbaijan,2010,No Data
-Bahamas,2010,0.0007333283131069
+"Bahamas, The",2010,0.0007333283131069
 Bahrain,2010,0.0
 Bangladesh,2010,0.0
 Barbados,2010,No Data
@@ -5417,7 +5417,7 @@ Uganda,2010,No Data
 Ukraine,2010,0.0
 United Arab Emirates,2010,0.0038955361580507
 United Kingdom,2010,0.0596745434030942
-United States Of America,2010,0.0
+United States,2010,0.0
 United States Minor Outlying I,2010,No Data
 Unspecified,2010,0.0539700773992619
 Uruguay,2010,0.0
@@ -5449,7 +5449,7 @@ Aruba,2011,0.0
 Australia,2011,0.326320191688878
 Austria,2011,0.0031612793706342
 Azerbaijan,2011,0.0
-Bahamas,2011,0.0
+"Bahamas, The",2011,0.0
 Bahrain,2011,0.0
 Bangladesh,2011,0.0
 Barbados,2011,0.0
@@ -5664,7 +5664,7 @@ Uganda,2011,0.0
 Ukraine,2011,0.0
 United Arab Emirates,2011,0.0072312095470565
 United Kingdom,2011,0.0453314590222231
-United States Of America,2011,0.0187742613728643
+United States,2011,0.0187742613728643
 United States Minor Outlying I,2011,0.0
 Unspecified,2011,0.0
 Uruguay,2011,0.182779833087994
@@ -5696,7 +5696,7 @@ Aruba,2012,0.0
 Australia,2012,0.0
 Austria,2012,0.0030286034789343
 Azerbaijan,2012,0.0
-Bahamas,2012,1.09043707945e-05
+"Bahamas, The",2012,1.09043707945e-05
 Bahrain,2012,0.0
 Bangladesh,2012,0.0
 Barbados,2012,0.0
@@ -5911,7 +5911,7 @@ Uganda,2012,0.0
 Ukraine,2012,0.0060823613875246
 United Arab Emirates,2012,0.0055822323562
 United Kingdom,2012,0.056458253441114
-United States Of America,2012,0.0
+United States,2012,0.0
 United States Minor Outlying I,2012,0.0
 Unspecified,2012,0.0
 Uruguay,2012,0.0
@@ -5943,7 +5943,7 @@ Aruba,2013,0.0
 Australia,2013,0.0
 Austria,2013,0.0393089557793651
 Azerbaijan,2013,0.0
-Bahamas,2013,0.192331475398021
+"Bahamas, The",2013,0.192331475398021
 Bahrain,2013,0.0
 Bangladesh,2013,0.0
 Barbados,2013,0.0
@@ -6158,7 +6158,7 @@ Uganda,2013,0.0
 Ukraine,2013,0.0085025462043645
 United Arab Emirates,2013,0.0
 United Kingdom,2013,0.0648481955203147
-United States Of America,2013,0.0
+United States,2013,0.0
 United States Minor Outlying I,2013,0.0
 Unspecified,2013,0.0
 Uruguay,2013,2.10114999668083
@@ -6190,7 +6190,7 @@ Aruba,2014,0.0
 Australia,2014,0.0
 Austria,2014,0.0385883911546831
 Azerbaijan,2014,0.0
-Bahamas,2014,0.186703128491313
+"Bahamas, The",2014,0.186703128491313
 Bahrain,2014,0.0
 Bangladesh,2014,0.0
 Barbados,2014,0.0
@@ -6405,7 +6405,7 @@ Uganda,2014,0.0
 Ukraine,2014,0.0083502743558033
 United Arab Emirates,2014,0.0
 United Kingdom,2014,0.0636804584051102
-United States Of America,2014,0.0
+United States,2014,0.0
 United States Minor Outlying I,2014,0.0
 Unspecified,2014,0.0
 Uruguay,2014,2.06364624362284
@@ -6437,7 +6437,7 @@ Aruba,2015,0.0
 Australia,2015,0.0
 Austria,2015,0.0254034205014587
 Azerbaijan,2015,0.0
-Bahamas,2015,2.35061932343166
+"Bahamas, The",2015,2.35061932343166
 Bahrain,2015,0.0
 Bangladesh,2015,0.0
 Barbados,2015,0.0
@@ -6652,7 +6652,7 @@ Uganda,2015,0.0
 Ukraine,2015,0.0456093531398515
 United Arab Emirates,2015,0.0
 United Kingdom,2015,0.105083896198548
-United States Of America,2015,0.0
+United States,2015,0.0
 United States Minor Outlying I,2015,0.0
 Unspecified,2015,0.0
 Uruguay,2015,0.0
@@ -6684,7 +6684,7 @@ Aruba,2016,0.0
 Australia,2016,0.0
 Austria,2016,0.067559794063999
 Azerbaijan,2016,0.0
-Bahamas,2016,0.0
+"Bahamas, The",2016,0.0
 Bahrain,2016,0.0
 Bangladesh,2016,0.0
 Barbados,2016,0.0
@@ -6899,7 +6899,7 @@ Uganda,2016,0.0
 Ukraine,2016,0.0480071841185648
 United Arab Emirates,2016,0.0
 United Kingdom,2016,0.148090827216256
-United States Of America,2016,0.0
+United States,2016,0.0
 United States Minor Outlying I,2016,0.0
 Unspecified,2016,0.0
 Uruguay,2016,0.0
@@ -6931,7 +6931,7 @@ Aruba,2017,0.0
 Australia,2017,0.0
 Austria,2017,0.0232572944452712
 Azerbaijan,2017,0.0
-Bahamas,2017,0.0
+"Bahamas, The",2017,0.0
 Bahrain,2017,0.0
 Bangladesh,2017,0.0
 Barbados,2017,0.0
@@ -7146,7 +7146,7 @@ Uganda,2017,0.0
 Ukraine,2017,0.0
 United Arab Emirates,2017,0.0
 United Kingdom,2017,0.11683690910505
-United States Of America,2017,0.0
+United States,2017,0.0
 United States Minor Outlying I,2017,0.0
 Unspecified,2017,0.0
 Uruguay,2017,0.0
@@ -7178,7 +7178,7 @@ Aruba,2018,0.0
 Australia,2018,0.0
 Austria,2018,0.068589382513669
 Azerbaijan,2018,0.0
-Bahamas,2018,0.0
+"Bahamas, The",2018,0.0
 Bahrain,2018,0.0
 Bangladesh,2018,0.0
 Barbados,2018,0.0
@@ -7393,7 +7393,7 @@ Uganda,2018,0.0
 Ukraine,2018,0.0
 United Arab Emirates,2018,0.0
 United Kingdom,2018,0.374221440239119
-United States Of America,2018,0.0
+United States,2018,0.0
 United States Minor Outlying I,2018,0.0
 Unspecified,2018,0.0
 Uruguay,2018,0.0
@@ -7425,7 +7425,7 @@ Aruba,2019,0.0
 Australia,2019,0.0
 Austria,2019,0.143124925021033
 Azerbaijan,2019,0.0
-Bahamas,2019,0.0
+"Bahamas, The",2019,0.0
 Bahrain,2019,0.0
 Bangladesh,2019,0.0
 Barbados,2019,0.0
@@ -7640,7 +7640,7 @@ Uganda,2019,0.0
 Ukraine,2019,0.607020755119126
 United Arab Emirates,2019,0.0
 United Kingdom,2019,0.592638642698913
-United States Of America,2019,0.0
+United States,2019,0.0
 United States Minor Outlying I,2019,0.0
 Unspecified,2019,0.0
 Uruguay,2019,0.0
@@ -7672,7 +7672,7 @@ Aruba,2020,0.0
 Australia,2020,0.0
 Austria,2020,0.0488848808980014
 Azerbaijan,2020,0.0
-Bahamas,2020,0.0
+"Bahamas, The",2020,0.0
 Bahrain,2020,0.0
 Bangladesh,2020,0.0
 Barbados,2020,0.0171338138010012
@@ -7887,7 +7887,7 @@ Uganda,2020,0.0
 Ukraine,2020,0.294159168313358
 United Arab Emirates,2020,0.0
 United Kingdom,2020,0.0736461070385055
-United States Of America,2020,0.0
+United States,2020,0.0
 United States Minor Outlying I,2020,0.0
 Unspecified,2020,0.0
 Uruguay,2020,0.0
@@ -7919,7 +7919,7 @@ Aruba,2021,0.0
 Australia,2021,0.0
 Austria,2021,0.0
 Azerbaijan,2021,0.0
-Bahamas,2021,0.0
+"Bahamas, The",2021,0.0
 Bahrain,2021,0.0
 Bangladesh,2021,0.0
 Barbados,2021,0.0144902710674211
@@ -8134,7 +8134,7 @@ Uganda,2021,0.0
 Ukraine,2021,0.286794023413483
 United Arab Emirates,2021,0.0
 United Kingdom,2021,0.0
-United States Of America,2021,0.0
+United States,2021,0.0
 United States Minor Outlying I,2021,0.0
 Unspecified,2021,0.0
 Uruguay,2021,0.0
@@ -8166,7 +8166,7 @@ Aruba,2022,0.0
 Australia,2022,0.0
 Austria,2022,0.0
 Azerbaijan,2022,0.0
-Bahamas,2022,0.0
+"Bahamas, The",2022,0.0
 Bahrain,2022,0.0
 Bangladesh,2022,0.0
 Barbados,2022,0.0
@@ -8381,7 +8381,7 @@ Uganda,2022,0.0
 Ukraine,2022,0.0
 United Arab Emirates,2022,0.0
 United Kingdom,2022,0.0
-United States Of America,2022,0.0
+United States,2022,0.0
 United States Minor Outlying I,2022,0.0
 Unspecified,2022,0.0
 Uruguay,2022,0.0
