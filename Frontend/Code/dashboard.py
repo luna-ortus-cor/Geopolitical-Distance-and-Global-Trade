@@ -272,7 +272,7 @@ app.layout = html.Div(id="app-container",
                                                         children=[
                                                             html.Span([
                                                                 html.Strong(
-                                                                    "Predicted Geopolitical Distance Index (GDI): "),
+                                                                    "Geopolitical Distance Index (GDI): "),
                                                                 html.Span(id="predicted-gdi-value",
                                                                           className="section-value")
                                                             ]),
@@ -585,8 +585,7 @@ def update_recommendations(clickData):
     country_name = country_matches.iloc[0]["Name"]
     
     if country_matches.empty:
-        return ("No data available", 
-        "", "", "", "", "", "", "", "", "")
+        return ("", "", "", "", "", "", "", "", "", "")
     
     try:
         # Get prediction data (assumed to always exist)
