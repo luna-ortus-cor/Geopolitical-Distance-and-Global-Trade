@@ -26,26 +26,28 @@ All metrics were computed at both the country level and in aggregate (mean and m
 - `Frontend/Data/gdi_cleaned.csv`: Geopolitical Distance Index (GDI) data for countries, including regional classifications.  
 - `Frontend/Data/updated_ahs_cleaned.csv`: Tariff rates applied to Singaporean exports over time.  
 - `Frontend/Code/dashboard.py`: Main script to launch the dashboard.  
-- `Backend/data/trade_to_gdp_ratio_clean.csv`: Trade to GDP ratio data
-- `Backend/code/geopoliticalmeasure.ipynb`: Code for constructing our geopolitical distance
-- `Backend/code/[clean]XXX.ipynb`: Codes for cleaning our data
+- `Backend/data/trade_to_gdp_ratio_clean.csv`: Trade to GDP ratio data.
+- `Backend/code/geopoliticalmeasure.ipynb`: Code for constructing our geopolitical distance.
+- `Backend/code/[clean]XXX.ipynb`: Codes for cleaning our data.
+- `Backend/code/tabular_evaluation_model.ipynb`: Code for evaluation of model.
 
 ```
 Geopolitical-Distance-and-Global-Trade/
 ├── Frontend/
 │   ├── Code/
-│   │   └── dashboard.py                 # Dash application entry point
+│   │   └── dashboard.py                     # Dash application entry point
 │   └── Data/
-│       ├── combined_trade_volume.csv   # Export volumes by product
-│       ├── gdi_cleaned.csv             # Geopolitical Distance Index
-│       ├── updated_ahs_cleaned.csv     # Tariff rates over time
+│       ├── combined_trade_volume.csv        # Export volumes by product
+│       ├── gdi_cleaned.csv                  # Geopolitical Distance Index
+│       ├── updated_ahs_cleaned.csv          # Tariff rates over time
 ├── Backend/
 │   ├── code/
-│   │   ├── geopoliticalmeasure.ipynb   # GDI computation
-│   │   └── [clean]XXX.ipynb            # Data cleaning scripts
+│   │   ├── geopoliticalmeasure.ipynb        # GDI computation
+│   │   └── [clean]XXX.ipynb                 # Data cleaning scripts
+│   │   └── tabular_evaluation_model.ipynb   # Model evaluation
 │   └── data/
-│       ├── trade_to_gdp_ratio_clean.csv  # Trade-to-GDP ratio data
-│       └── recommendations.csv           # Forecasted trade volume
+│       ├── trade_to_gdp_ratio_clean.csv     # Trade-to-GDP ratio data
+│       └── recommendations.csv              # Forecasted trade volume
 └── README.md
 ```
 ---
