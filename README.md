@@ -1,29 +1,44 @@
-# Geopolitical-Distance-and-Global-Trade
-DSE3101 Project
+# Geopolitical-Distance-and-Global-Trade  
+DSE3101 Project  
 
-## Files and Folders
+---
 
+## Models  
+*(Describe your models here if needed)*  
 
-## Running our Dashboard Locally
+---
 
-1. **Clone or download** our repository and set it as your working directory in your environment.
+## Key Files and Folders  
+- `Frontend/Data/combined_trade_volume.csv`: Export volume of Singapore by product categories.  
+- `Frontend/Data/gdi_cleaned.csv`: Geopolitical Distance Index (GDI) data for countries, including regional classifications.  
+- `Frontend/Data/updated_ahs_cleaned.csv`: Tariff rates applied to Singaporean exports over time.  
+- `Frontend/Code/dashboard.py`: Main script to launch the dashboard.  
 
-2. Ensure you have the necessary dependencies to run our project by running:
-   ```bash
-   pip install -r Frontend/Code/requirements.txt
+---
 
-3.Run our dashboard by executing the following command in your terminal:
-python -m Frontend.Code.dashboard
+## Running Our Dashboard Locally  
 
-After running, your terminal will display output like:
-Dash is running on http://0.0.0.0:8080/
-* Running on http://127.0.0.1:8080
-* Running on http://192.168.X.X:8080
+1. **Clone or download** the repository and set it as your working directory.  
 
-4. **To view the dashboard:**
-   - Use `http://127.0.0.1:8080` if you're on the **same computer** (localhost).
-   - Use `http://192.168.X.X:8080` if you want to access the dashboard from **another device on the same Wi-Fi** (e.g., phone, tablet, or another computer).
-     - The `192.168.X.X` is the **local IP address** of the computer running the Dash app. It will automatically show up in your terminal after you run the app.
-     - For example, if the terminal shows `Running on http://192.168.1.17:8080`, that's the address you can use from other devices on the same network.
+2. Install dependencies:  
+   ```bash  
+   pip install -r Frontend/Code/requirements.txt  
+   ```  
 
+3. Run the dashboard:  
+   ```bash  
+   python -m Frontend.Code.dashboard  
+   ```  
 
+   After running, the terminal will display:  
+   ```  
+   Dash is running on http://0.0.0.0:8080/  
+   * Running on http://127.0.0.1:8080  
+   * Running on http://192.168.X.X:8080  
+   ```  
+
+4. **Access the dashboard**:  
+   - **Local machine**: Use `http://127.0.0.1:8080` in your browser.  
+   - **Other devices on the same network**: Use `http://192.168.X.X:8080` (replace `X.X` with the IP shown in your terminal).  
+
+---
