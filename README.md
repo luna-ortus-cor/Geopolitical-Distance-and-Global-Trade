@@ -14,6 +14,9 @@ DSE3101 Project
 - `Frontend/Data/updated_ahs_cleaned.csv`: Tariff rates applied to Singaporean exports over time.  
 - `Frontend/Code/dashboard.py`: Main script to launch the dashboard.  
 - `Backend/data/trade_to_gdp_ratio_clean.csv`: Trade to GDP ratio data
+- `Backend/code/geopoliticalmeasure.ipynb`: Code for constructing our geopolitical distance
+- `Backend/code/[clean]XXX.ipynb`: Codes for cleaning our data
+- `Backend/code/[clean]generalcleaning.ipynb: Code for joining all of our datasets together
 ---
 
 ## Running Our Dashboard Locally  
