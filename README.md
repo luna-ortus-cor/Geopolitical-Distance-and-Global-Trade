@@ -6,7 +6,7 @@ The main objective of our project is to develop a new measure of geopolitical di
 ---
 
 ## Models  
-We implemented a Darts-based time series forecasting approach on a per-country basis (final_forecast_model.ipynb),      enabling country-specific modeling to capture the unique patterns in each trade relationship, considering both          economic factors and geopolitical considerations that impact export dynamics. Some pre-processing was conducted to      ensure data validity by replacing/removing `NaNs`. Cross-validation was also performed using an expanding window        cross-validation framework. Hyperparameters were finetuned using grid search.
+We implemented a Darts-based time series forecasting approach on a per-country basis (`final_forecast_model.ipynb`), enabling country-specific modeling to capture the unique patterns in each trade relationship, considering both economic factors and geopolitical considerations that impact export dynamics. Some pre-processing was conducted to ensure data validity by replacing/removing `NaNs`. Cross-validation was also performed using an expanding window cross-validation framework and hyperparameters were finetuned using grid search.
 
 ## Cross Validation
 All metrics were computed at both the country level and in aggregate (mean and median across all countries) to ensure a balanced and nuanced comparison. Across the board, Random Forest consistently achieved the lowest MAPE, MAE, MSE, RMSE, AIC and BIC, demonstrating both strong predictive accuracy and parsimony, and were therefore selected as the preferred model for the final forecast. 
