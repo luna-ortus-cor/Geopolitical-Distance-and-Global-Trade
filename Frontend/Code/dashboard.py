@@ -623,7 +623,7 @@ def update_recommendations(clickData):
     export_class = classify(row["exp_export_2021"], "export")
     export_text = {
         "HIGH": "This value is >75th percentile and considerd HIGH. A high export volume suggests strong and sustained demand, signaling solid commercial potential. It is recommended to expand export commitments and explore long-term trade contracts",
-        "AVERAGE": "This value is at 25-75th percentile and considered AVERAGE. This market is neighter a top performer not significantly underperforming. Maintain current export strategy but keep a lookout for new markets.",
+        "AVERAGE": "This value is at 25-75th percentile and considered AVERAGE. This market is neighter a top performer nor significantly underperforming. Maintain current export strategy but keep a lookout for new markets.",
         "LOW": "This value is <25th percentile and considered LOW. Low volume may reflect poor fit, weak demand, or external barriers (e.g. regulations). Monitor market before making decisions, and consider reducing export volume or exploring new destinations."
     }.get(export_class, "No data available")
 
