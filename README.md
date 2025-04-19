@@ -1,6 +1,6 @@
 # Geopolitical-Distance-and-Global-Trade  
 DSE3101 Project  
-
+The main objective of our project is to develop a new measure of geopolitical distance between Singapore and other countries, and to provide export strategy recommendations.
 ---
 
 ## Models  
