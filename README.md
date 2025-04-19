@@ -18,6 +18,25 @@ The main objective of our project is to develop a new measure of geopolitical di
 - `Backend/data/trade_to_gdp_ratio_clean.csv`: Trade to GDP ratio data
 - `Backend/code/geopoliticalmeasure.ipynb`: Code for constructing our geopolitical distance
 - `Backend/code/[clean]XXX.ipynb`: Codes for cleaning our data
+
+```
+Geopolitical-Distance-and-Global-Trade/
+├── Frontend/
+│   ├── Code/
+│   │   └── dashboard.py                 # Dash application entry point
+│   └── Data/
+│       ├── combined_trade_volume.csv   # Export volumes by product
+│       ├── gdi_cleaned.csv             # Geopolitical Distance Index
+│       ├── updated_ahs_cleaned.csv     # Tariff rates over time
+├── Backend/
+│   ├── code/
+│   │   ├── geopoliticalmeasure.ipynb   # GDI computation
+│   │   └── [clean]XXX.ipynb            # Data cleaning scripts
+│   └── data/
+│       ├── trade_to_gdp_ratio_clean.csv  # Trade-to-GDP ratio data
+│       └── recommendations.csv           # Forecasted trade volume
+└── README.md
+```
 ---
 
 ## Running Our Dashboard Locally  
