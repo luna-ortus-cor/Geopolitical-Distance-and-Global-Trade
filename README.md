@@ -13,7 +13,7 @@ DSE3101 Project
 - `Frontend/Data/gdi_cleaned.csv`: Geopolitical Distance Index (GDI) data for countries, including regional classifications.  
 - `Frontend/Data/updated_ahs_cleaned.csv`: Tariff rates applied to Singaporean exports over time.  
 - `Frontend/Code/dashboard.py`: Main script to launch the dashboard.  
-- `Backend\data\trade_to_gdp_ratio_clean.csv`: Trade to GDP ratio data
+- `Backend/data/trade_to_gdp_ratio_clean.csv`: Trade to GDP ratio data
 ---
 
 ## Running Our Dashboard Locally  
