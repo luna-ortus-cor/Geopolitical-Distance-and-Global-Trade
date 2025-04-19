@@ -9,7 +9,7 @@ The main objective of our project is to develop a new measure of geopolitical di
 We implemented a Darts-based time series forecasting approach on a per-country basis (final_forecast_model.ipynb), enabling country-specific modeling to capture the unique patterns in each trade relationship, considering both economic factors and geopolitical considerations that impact export dynamics.
 
 ## Cross Validation
-All metrics were computed at both the country level and in aggregate (mean and median across all countries) to ensure a balanced and nuanced comparison. Across the board (Table 2.3.5.1), Random Forest consistently achieved the lowest MAPE, MAE, MSE, RMSE, AIC and BIC, demonstrating both strong predictive accuracy and parsimony, and were therefore selected as the preferred model for the final forecast. 
+All metrics were computed at both the country level and in aggregate (mean and median across all countries) to ensure a balanced and nuanced comparison. Across the board, Random Forest consistently achieved the lowest MAPE, MAE, MSE, RMSE, AIC and BIC, demonstrating both strong predictive accuracy and parsimony, and were therefore selected as the preferred model for the final forecast. 
 | Metric          | Random Forest     | XGBoost          | LightGBM         |
 |-----------------|-------------------|------------------|------------------|
 | **MAPE (%)**    | **2.9051**        | 3.0657           | 3.1693           |
