@@ -16,7 +16,6 @@ DSE3101 Project
 - `Backend/data/trade_to_gdp_ratio_clean.csv`: Trade to GDP ratio data
 - `Backend/code/geopoliticalmeasure.ipynb`: Code for constructing our geopolitical distance
 - `Backend/code/[clean]XXX.ipynb`: Codes for cleaning our data
-- `Backend/code/[clean]generalcleaning.ipynb: Code for joining all of our datasets together
 ---
 
 ## Running Our Dashboard Locally  
